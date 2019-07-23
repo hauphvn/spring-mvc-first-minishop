@@ -1,0 +1,10 @@
+-----tx--------
+De tao cac transaction
+Tai sao phai tao transaction:
+Vi neu nhu kieu truyen thong ta phai
+session.beginTransaction()
+session.close()
+
+------Thu tu cac buoc--------
+Cai dat hibernate
+

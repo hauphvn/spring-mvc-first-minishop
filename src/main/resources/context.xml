@@ -1,6 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xmlns:context="http://www.springframework.org/schema/context"-->
+<!--       xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:aop="http://www.springframework.org/schema/aop"-->
+<!--       xmlns:tx="http://www.springframework.org/schema/tx"-->
+<!--       xsi:schemaLocation="-->
+<!--       http://www.springframework.org/schema/beans-->
+<!--       http://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--       http://www.springframework.org/schema/context-->
+<!--       http://www.springframework.org/schema/tx-->
+<!--       http://www.springframework.org/schema/aop-->
+<!--       https://www.springframework.org/schema/aop/spring-aop.xsd-->
+<!--       https://www.springframework.org/schema/tx/spring-tx.xsd-->
+<!--       http://www.springframework.org/schema/context/spring-context.xsd">-->
 
-</beans>
+<!--    &lt;!&ndash;    START KET NOI DEN MYSQL&ndash;&gt;-->
+<!--    <bean id="dataSource"-->
+<!--          class="org.apache.commons.dbcp2.BasicDataSource">-->
+
+<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>-->
+<!--        <property name="url" value="jdbc:mysql://localhost:3306/minishop"/>-->
+<!--        <property name="username" value="root"/>-->
+<!--        <property name="password" value="1"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash;    END KET NOI MYSQL&ndash;&gt;-->
+
+<!--    &lt;!&ndash;    START CHO PHEP SCAN TRANSACTION SESSION (@Transaction gi do, cho project hieu ten dinh danh do&ndash;&gt;-->
+<!--    <tx:annotation-driven transaction-manager="transactionManager" />-->
+<!--    &lt;!&ndash;    END CHO PHEP SCAN TRANSACTION SESSION&ndash;&gt;-->
+
+
+
+<!--    &lt;!&ndash;    STAR TRANSACTION MANAGER DE CHO GOI SESSION GON GAN HON&ndash;&gt;-->
+<!--    <bean id="transactionManager"-->
+<!--          class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
+<!--        <property name="sessionFactory" ref="sessionFactory"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash;    END TRANSACTION MANAGER DE CHO GOI SESSION GON GAN HON&ndash;&gt;-->
+<!--    &lt;!&ndash;    //START SESSION FACTORY DE QUAN LY HIBERNATE&ndash;&gt;-->
+<!--    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
+<!--        <property name="dataSource" ref="dataSource"/>-->
+<!--        <property name="packagesToScan" value="edu.minishop.model"/>-->
+<!--        <property name="hibernateProperties">-->
+<!--            <props>-->
+<!--                &lt;!&ndash;                LUA CHON HE CO SO DU LIEU&ndash;&gt;-->
+<!--                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
+<!--                &lt;!&ndash;                CHO PHEP HIEN THI CAU TRUY VAN LEN TRINH DUYET&ndash;&gt;-->
+<!--                <prop key="hibernate.show_sql">true</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash;    //END SESSION FACTORY DE QUAN LY HIBERNATE&ndash;&gt;-->
+
+<!--</beans>-->
