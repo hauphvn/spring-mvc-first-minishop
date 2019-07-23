@@ -1,0 +1,143 @@
+@charset "UTF-8";
+.pageDetail{
+    color: red;
+}
+body{
+    width: 100%;
+    height: 100%;
+    font-family: Roboto;
+    font-size: 14px;
+}
+
+/*dinh dang phan login*/
+#body-login{
+    background-color: aliceblue;
+}
+
+#body-flex-login{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#container-login{
+    display: flex;
+    width: 820px;
+    height: 610px;
+    background-color: white;
+}
+
+#avatar-login{
+    background-color: pink;
+    width: 480px;
+    height: 610px;
+    background-image: url("../imgs/login-logo.jpg");
+    display:flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 0 16px;
+}
+
+#input-login{
+
+}
+
+#input-login{
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+    background-color: orange;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+#logo-social{
+    align-self: flex-end;
+    margin-bottom: 16px;
+}
+
+#form-login input[type=text]{
+    margin-bottom: 8px;
+}
+
+#form-login input[type=submit]{
+    margin-top: 24px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+#hint-text-logo{
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+#text-logo{
+    font-size: 48px;
+}
+
+#text-header-login-left{
+    text-align: center;
+    color: black;
+}
+
+#text-top-right{
+    font-size: 20px;
+}
+
+#text-header-login-left-bottom span{
+    margin: 0 8px;
+}
+
+#text-header-login-left-bottom{
+    margin-bottom: 64px;
+}
+
+.input-icon-email{
+    background: url(../imgs/mail.png) no-repeat scroll 4px;
+    height: 38px;
+    border: none;
+    background-color: #d8d8d8;
+    width: 100%;
+    padding-left: 30px;
+}
+
+.input-icon-password{
+    background: url(../imgs/lock.png)no-repeat scroll 4px;
+    height: 38px;
+    border: none;
+    background-color: #d8d8d8;
+    width: 100%;
+    padding-left: 30px;
+}
+
+
+.meterial-submit-input{
+    height: 38px;
+    border: none;
+    background-color: #00909c;
+    width: 100%;
+    box-shadow: 2px 2px 2px black;
+}
+
+
+.login-actived{
+    color: red;
+}
+
+.header-login{
+    margin-top: 32px;
+}
+
+.jqueryOrange{
+    background-color: orange;
+}
+
+.jqueryRed{
+    background-color: red;
+}
+
+
+/*ket thuc dinh dang login*/
