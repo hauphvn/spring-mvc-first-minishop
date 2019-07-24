@@ -51,10 +51,16 @@ password: nvarchar(20)
 
 PRODUCT
 id: integer: tu dong tang: khoa chinh
+idCategory: integer: khoa ngoai cua bang CATEGORY
 name: nvarchar(50)
 price: integer
 image: nvarchar(50)
 description: nvarchar
+
+CATEGORY
+id: integer: tu dong tang: khoa chinh
+name: nvarchar(50)
+image: nvarchar(50)
 
 COLORPRODUCT( vi mot san phan co nhieu mau va size nen ta lam bang nay)
 id: integer: tu dong tang: khoa chinh
