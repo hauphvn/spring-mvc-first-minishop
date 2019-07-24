@@ -6,5 +6,26 @@ session.beginTransaction()
 session.close()
 
 ------Thu tu cac buoc--------
-Cai dat hibernate
+Lay yeu cau khach hang
+1.Ai la nguoi quan li website( de phan quyen)
+1.1Quan ly: thao tac toan bo chuc nang
+1.2Nhan vien: nhap, xuat kho, cap nhap thong tin ban than
+
+2. Khach hang duoc phep lam gi
+2.1 Khong can dang nhap de mua hang
+2.2 Cho phep khach hang xem truoc san pham
+2.3 Thanh toan qua ngan hang va tra tien khi nhan hang
+
+3. Muon giao dien trang web nhu the nao
+3.1 Khach hang co templet san
+3.2 Khach hang yeu cau thiet ke mau cho xem
+
+4.Bao tri
+4.1 Con thoi gian bao tri
+4.1.1 Bao tri nhung chuc nang nao
+4.1.2 Thoi gian bao tri
+4.2 Het thoi gian bao tri
+4.2.1 Chi phi bao tri tinh nhu the nao(theo loi, theo hour)
+
+
 
