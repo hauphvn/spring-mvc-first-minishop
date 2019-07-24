@@ -28,4 +28,73 @@ Lay yeu cau khach hang
 4.2.1 Chi phi bao tri tinh nhu the nao(theo loi, theo hour)
 
 
+----------Thiet ke database-----------
+Table:
+EMPLOYEE
+id: integer : tu dong tang : khoa chinh
+name: nvarchar(50)
+address: nvarchar(50)
+sex: boolean
+identitycard: nvarchar(20)
+numberphone: nvarchar(20)
+email: nvarchar(50)
+idposition: integer: khoa ngoai cua bang Position
 
+POSITION
+id: integer : tu dong tang : khoa chinh
+name: nvarchar(20)
+
+LOGIN
+idEmployee: integer: la khoa chinh, la khoa ngoai cua bang employee
+username: nvarchar(20)
+password: nvarchar(20)
+
+PRODUCT
+id: integer: tu dong tang: khoa chinh
+name: nvarchar(50)
+price: integer
+image: nvarchar(50)
+description: nvarchar
+
+COLORPRODUCT( vi mot san phan co nhieu mau va size nen ta lam bang nay)
+id: integer: tu dong tang: khoa chinh
+idProduct: integer: khoa ngoai cua bang Product
+idSize: integer: khoa ngoai bang SIZE
+namecolor: nvarchar(20)
+
+
+SIZE(1 color co nhieu size)
+id: integer: tu dong tang: khoa chinh
+idColor: integer: khoa ngoai cua bang COLORPRODUCT
+name: nvarchar(20)
+amountProduct: int
+
+DISCOUNT
+id: integer: tu dong tang: khoa chinh
+name: nvarchar(100)
+startime: nvarchar(50)
+endtime: nvarchar(50)
+description: nvarchar
+imageProduct: nvarchar(50)
+
+
+DETAILDISCOUNT( vi mot lan khuyen mai co the nhieu san pham)
+idDiscout: integer: khoa chinh
+idProduct: integer: khoa chinh
+pricediscount: integer
+
+INVOICE
+id: integer: tu dong tang: khoa chinh
+namecustomer: nvarchar(50)
+numberphone: nvarchar(20)
+deliveryadress: nvarchar(50)
+status: boolean
+purchasedate: nvarchar(10)
+
+
+DETAILINVOICE( vi mot hoa don co nhieu san pham)
+idInvoice: integer: khoa ngoai bang Invoice
+idProduct: integer: khoa ngoai bang Product
+idSize: integer: khoa ngoai bang SIZE
+idColor: integer: khoa ngoai COLORPRODUCT
+Primary key: idInvoice, idProduct, idSize, idColor
