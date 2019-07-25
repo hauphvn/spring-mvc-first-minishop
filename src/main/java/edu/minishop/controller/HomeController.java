@@ -16,19 +16,19 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    SessionFactory sessionFactory;//Se lien he toi IoC, tim id giong sessionFactory
+//    SessionFactory sessionFactory;//Se lien he toi IoC, tim id giong sessionFactory
     // SessionFactory chua giao thuc ket noi database
 //    //Se return mot session
     @GetMapping("/")
-    @Transactional //De thuc hien commit va rollback, cua spring framewword
+//    @Transactional //De thuc hien commit va rollback, cua spring framewword
     public String Default(){
 
-        Session session = sessionFactory.getCurrentSession();
-        String sql = "from NhanVien where id = :id";
-        Query query = session.createQuery(sql);
-        query.setParameter("id", 1);
-        NhanVien nhanVien = (NhanVien)query.getSingleResult();
-        System.out.println(nhanVien);
+//        Session session = sessionFactory.getCurrentSession();
+//        String sql = "from NhanVien where id = :id";
+//        Query query = session.createQuery(sql);
+//        query.setParameter("id", 1);
+//        NhanVien nhanVien = (NhanVien)query.getSingleResult();
+//        System.out.println(nhanVien);
 
         return "home";
 //        Session session = sessionFactory.openSession();
