@@ -145,7 +145,7 @@ body {
 /*css homepage*/
 #header {
     background: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.42)),
-    url("../imgs/bgHeader2.png ") no-repeat center center fixed;
+    url("../imgs/bgHeader2.png ") no-repeat center center;
     height: 662px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -217,5 +217,14 @@ body {
     .navbar-center{
         margin-left: 35% !important;
     }
+}
+
+#info{
+    text-align: center;
+    margin-top: 48px;
+}
+
+#info div >span{
+    margin-top: 16px;
 }
 /*end css homepage*/
