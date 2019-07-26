@@ -145,7 +145,7 @@ body {
 /*css homepage*/
 #header {
     background: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.42)),
-    url("../imgs/bgHeader.webp") no-repeat center center fixed;
+    url("../imgs/bgHeader2.png ") no-repeat center center fixed;
     height: 662px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -170,9 +170,9 @@ body {
     border: none !important;
 }
 
-.navbar-center{
-    margin-left: 35% !important;
-}
+/*.navbar-center{*/
+/*    margin-left: 35% !important;*/
+/*}*/
 
 .event-header{
     text-align: center;
@@ -183,10 +183,39 @@ body {
     color: white;
 }
 
-.event-header >button{
+.event-header >button {
     color: white;
     background-color: red;
     border: red;
 }
 
+@media (max-width: 575.98px) {
+    .navbar-center{
+        margin-left: 0 !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .navbar-center{
+        margin-left: 0 !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .navbar-center{
+        margin-left: 12% !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .navbar-center{
+        margin-left: 12% !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar-center{
+        margin-left: 35% !important;
+    }
+}
 /*end css homepage*/
