@@ -79,7 +79,9 @@
     </div>
 </div>
 <div class="product-title container">
-    <span>SẢN PHẨM HOT</span>
+    <div style="margin-bottom: 48px;">
+        <span>SẢN PHẨM HOT</span>
+    </div>
     <div class="row">
         <div class="col-md-3 col-sm-6">
            <div class="product-home">
@@ -129,11 +131,76 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-home">
+                <div class="card-deck product-cart" >
+                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">Áo sơ mi</h4>
+                        <%--                        <p class="card-text">Some example text.</p>--%>
+                        <a href="#" class="btn btn-primary">150K</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-home">
+                <div class="card-deck product-cart" >
+                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">Áo sơ mi</h4>
+                        <%--                        <p class="card-text">Some example text.</p>--%>
+                        <a href="#" class="btn btn-primary">150K</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-home">
+                <div class="card-deck product-cart" >
+                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">Áo sơ mi</h4>
+                        <%--                        <p class="card-text">Some example text.</p>--%>
+                        <a href="#" class="btn btn-primary">150K</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-home">
+                <div class="card-deck product-cart" >
+                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">Áo sơ mi</h4>
+                        <%--                        <p class="card-text">Some example text.</p>--%>
+                        <a href="#" class="btn btn-primary">150K</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </div>
 </div>
-<div>Footer</div>
+<div id="footer" class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <span class="title-footer">THÔNG TIN SHOP</span><br/>
+            <span>Minihshop là một thương hiệu đây uy tín, luôn đưa khách hàng lên hàng cao nhất</span>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <span class="title-footer">LIÊN HỆ</span><br/>
+            <span>161D/Lạc long quân, phường 3, quận 11, TP. Hồ Chí Minh</span>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <span class="title-footer">GÓP Ý</span><br/>
+            <input class="footer-command" type="text" placeholder="Email"/>
+            <textarea class="footer-command" rows="4" cols="30" placeholder="Nhập nội dung"></textarea>
+            <button type="submit" style="width: 100%; font-weight: bold;">Gửi</button>
+        </div>
+    </div>
+</div>
 <jsp:include page="footer.jsp"/>
 </body>
 </html>

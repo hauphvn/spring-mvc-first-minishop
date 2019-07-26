@@ -236,7 +236,7 @@ body {
 }
 
 .product-home{
-    margin-top: 48px;
+    margin-bottom: 20px;
 
 }
 .product-cart{
@@ -246,6 +246,31 @@ body {
     border-radius: 5px;
     padding: 5px;
 }
+
+#footer{
+    background: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.42)),
+    url("../imgs/bg-footer.jpeg ") no-repeat center center ;
+    background-size: 100%;
+    margin-top: 42px;
+    background-color: black;
+    color: white;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    margin-bottom: 10px;
+}
+
+.title-footer{
+    text-align: center;
+    font-size: 32px;
+}
+
+.footer-command{
+    width: 100%;
+    background-color: #eaeaea;
+    margin-bottom: 8px;
+}
+
+
 
 
 /*end css homepage*/
