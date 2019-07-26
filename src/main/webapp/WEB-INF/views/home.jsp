@@ -13,39 +13,42 @@
     <div>
         <nav id="nav-homepage" class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">MINISHOP</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <div class="navbar-center">
-                   <ul class="navbar-nav mr-auto">
-                       <li class="nav-item active">
-                           <a class="nav-link nav-link-actived" href="#">TRANG CHỦ</a>
-                       </li>
-                       <li class="nav-item">
-                           <a class="nav-link" href="#">DỊCH VỤ</a>
-                       </li>
-                       <li class="nav-item">
-                           <a class="nav-link" href="#">LIÊN HỆ</a>
-                       </li>
-                       <li class="nav-item dropdown">
-                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               THỜI TRANG
-                           </a>
-                           <div class="dropdown-menu dropdown-menu-none" aria-labelledby="navbarDropdown">
-                               <a class="dropdown-item" href="#">Action</a>
-                               <a class="dropdown-item" href="#">Another action</a>
-                               <%--                            <div class="dropdown-divider"></div>--%>
-                               <%--                            <a class="dropdown-item" href="#">Something else here</a>--%>
-                           </div>
-                       </li>
-                   </ul>
-               </div>
+                <div class="navbar-center">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link nav-link-actived" href="#">TRANG CHỦ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">DỊCH VỤ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">LIÊN HỆ</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                THỜI TRANG
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-none" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <%--                            <div class="dropdown-divider"></div>--%>
+                                <%--                            <a class="dropdown-item" href="#">Something else here</a>--%>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item"><a class="nav-link" href="#">ĐĂNG KÝ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">ĐĂNG NHẬP</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><img src='<c:url value="/resources/imgs/white-cart.ico"/> ' alt=""></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><img
+                            src='<c:url value="/resources/imgs/white-cart.ico"/> ' alt=""></a></li>
                 </ul>
             </div>
         </nav>
@@ -59,23 +62,78 @@
 <div id="info" class="container">
     <div class="row">
         <div class="col-12 col-sm-4 col-md-4">
-            <img src='<c:url value="/resources/imgs/quality.png"/> ' alt="icon-quality"><br/>
+            <img src='<c:url value="/resources/imgs/quality.png"/> ' alt="icon-quality"/><br/>
             <span style="font-size: 32px;">Chất lượng</span><br/>
             <span>Chúng tôi cam kết sẽ mang đến cho bạn sản phẩm với chất lượng tốt nhất</span>
         </div>
         <div class="col-12 col-sm-4 col-md-4">
-            <img src='<c:url value="/resources/imgs/icon-piggy-bank.png"/> ' alt="icon-quality"><br/>
+            <img src='<c:url value="/resources/imgs/icon-piggy-bank.png"/> ' alt="icon-quality"/><br/>
             <span style="font-size: 32px;">Tiết kiệm chi phí</span><br/>
             <span>Chúng tôi cam kết sẽ mang đến cho bạn sản phẩm với chất lượng tốt nhất</span>
         </div>
         <div class="col-12 col-sm-4 col-md-4">
-            <img src='<c:url value="/resources/imgs/icon-shipped.png"/> ' alt="icon-quality"><br/>
+            <img src='<c:url value="/resources/imgs/icon-shipped.png"/> ' alt="icon-quality"/><br/>
             <span style="font-size: 32px;">Giao hàng</span><br/>
             <span>Chúng tôi cam kết sẽ mang đến cho bạn sản phẩm với chất lượng tốt nhất</span>
         </div>
     </div>
 </div>
-<div></div>
+<div class="product-title container">
+    <span>SẢN PHẨM HOT</span>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+           <div class="product-home">
+               <div class="card-deck product-cart" >
+                   <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
+                   <div class="card-body">
+                       <h4 class="card-title">Áo sơ mi</h4>
+<%--                       <p class="card-text">Some example text.</p>--%>
+                       <a href="#" class="btn btn-primary">150K</a>
+                   </div>
+               </div>
+           </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-home">
+                <div class="card-deck product-cart" >
+                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">Áo sơ mi</h4>
+<%--                        <p class="card-text">Some example text.</p>--%>
+                        <a href="#" class="btn btn-primary">150K</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-home">
+                <div class="card-deck product-cart" >
+                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">Áo sơ mi</h4>
+<%--                        <p class="card-text">Some example text.</p>--%>
+                        <a href="#" class="btn btn-primary">150K</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-home">
+                <div class="card-deck product-cart" >
+                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">Áo sơ mi</h4>
+<%--                        <p class="card-text">Some example text.</p>--%>
+                        <a href="#" class="btn btn-primary">150K</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div>Footer</div>
 <jsp:include page="footer.jsp"/>
 </body>
 </html>
