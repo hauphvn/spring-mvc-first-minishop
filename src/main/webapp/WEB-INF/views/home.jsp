@@ -52,7 +52,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="event-header container">
+        <div class="event-header container wow flash">
             <span>Ngày 1/1 đến 2/3</span><br/>
             <span style="font-size: 50px">Mua 1 tặng 1</span><br/>
             <button>XEM NGAY</button>
@@ -61,17 +61,17 @@
 </div>
 <div id="info" class="container">
     <div class="row">
-        <div class="col-12 col-sm-4 col-md-4">
+        <div class="col-12 col-sm-4 col-md-4 wow fadeInRight" data-wow-duration="2s">
             <img src='<c:url value="/resources/imgs/quality.png"/> ' alt="icon-quality"/><br/>
             <span style="font-size: 32px;">Chất lượng</span><br/>
             <span>Chúng tôi cam kết sẽ mang đến cho bạn sản phẩm với chất lượng tốt nhất</span>
         </div>
-        <div class="col-12 col-sm-4 col-md-4">
+        <div class="col-12 col-sm-4 col-md-4 wow fadeInLeft" data-wow-duration="2s">
             <img src='<c:url value="/resources/imgs/icon-piggy-bank.png"/> ' alt="icon-quality"/><br/>
             <span style="font-size: 32px;">Tiết kiệm chi phí</span><br/>
             <span>Chúng tôi cam kết sẽ mang đến cho bạn sản phẩm với chất lượng tốt nhất</span>
         </div>
-        <div class="col-12 col-sm-4 col-md-4">
+        <div class="col-12 col-sm-4 col-md-4 wow fadeInDown" data-wow-duration="2s">
             <img src='<c:url value="/resources/imgs/icon-shipped.png"/> ' alt="icon-quality"/><br/>
             <span style="font-size: 32px;">Giao hàng</span><br/>
             <span>Chúng tôi cam kết sẽ mang đến cho bạn sản phẩm với chất lượng tốt nhất</span>
@@ -84,7 +84,7 @@
     </div>
     <div class="row">
         <div class="col-md-3 col-sm-6">
-           <div class="product-home">
+           <div class="product-home wow zoomIn">
                <div class="card-deck product-cart" >
                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
                    <div class="card-body">
@@ -96,7 +96,7 @@
            </div>
         </div>
         <div class="col-md-3 col-sm-6">
-            <div class="product-home">
+            <div class="product-home wow zoomIn">
                 <div class="card-deck product-cart" >
                     <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
                     <div class="card-body">
@@ -108,7 +108,7 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
-            <div class="product-home">
+            <div class="product-home wow zoomIn">
                 <div class="card-deck product-cart" >
                     <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
                     <div class="card-body">
@@ -120,7 +120,7 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
-            <div class="product-home">
+            <div class="product-home wow zoomIn">
                 <div class="card-deck product-cart" >
                     <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
                     <div class="card-body">
@@ -132,7 +132,7 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
-            <div class="product-home">
+            <div class="product-home wow zoomIn">
                 <div class="card-deck product-cart" >
                     <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
                     <div class="card-body">
@@ -144,7 +144,7 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
-            <div class="product-home">
+            <div class="product-home wow zoomIn">
                 <div class="card-deck product-cart" >
                     <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
                     <div class="card-body">
@@ -156,7 +156,7 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
-            <div class="product-home">
+            <div class="product-home wow zoomIn">
                 <div class="card-deck product-cart" >
                     <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
                     <div class="card-body">
@@ -168,7 +168,7 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
-            <div class="product-home">
+            <div class="product-home wow zoomIn">
                 <div class="card-deck product-cart" >
                     <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
                     <div class="card-body">
@@ -185,15 +185,15 @@
 </div>
 <div id="footer" class="container-fluid">
     <div class="row">
-        <div class="col-md-4 col-sm-4">
-            <span class="title-footer">THÔNG TIN SHOP</span><br/>
+        <div class="col-md-4 col-sm-4 wow fadeInRight" data-wow-duration="2s">
+            <span class="title-footer ">THÔNG TIN SHOP</span><br/>
             <span>Minihshop là một thương hiệu đây uy tín, luôn đưa khách hàng lên hàng cao nhất</span>
         </div>
-        <div class="col-md-4 col-sm-4">
-            <span class="title-footer">LIÊN HỆ</span><br/>
+        <div class="col-md-4 col-sm-4 wow fadeInDown">
+            <span class="title-footer ">LIÊN HỆ</span><br/>
             <span>161D/Lạc long quân, phường 3, quận 11, TP. Hồ Chí Minh</span>
         </div>
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-4 col-sm-4  wow fadeInLeft">
             <span class="title-footer">GÓP Ý</span><br/>
             <input class="footer-command" type="text" placeholder="Email"/>
             <textarea class="footer-command" rows="4" cols="30" placeholder="Nhập nội dung"></textarea>
