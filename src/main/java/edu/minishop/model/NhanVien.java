@@ -35,6 +35,14 @@ public class NhanVien {
         this.age = age;
     }
 
+    public NhanVien(String fullname, int age) {
+        this.fullname = fullname;
+        this.age = age;
+    }
+
+    public NhanVien() {
+    }
+
     @Override
     public String toString() {
         return id + " - "+ fullname + " - " + age;

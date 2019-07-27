@@ -13,38 +13,70 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
+@RequestMapping("/")
 public class HomeController {
 
     @Autowired
-//    SessionFactory sessionFactory;//Se lien he toi IoC, tim id giong sessionFactory
-    // SessionFactory chua giao thuc ket noi database
-//    //Se return mot session
-    @GetMapping("/")
-//    @Transactional //De thuc hien commit va rollback, cua spring framewword
+    SessionFactory sessionFactory;
+    @GetMapping
+    @Transactional
     public String Default(){
 
+        //Updata database with the way 1
 //        Session session = sessionFactory.getCurrentSession();
-//        String sql = "from NhanVien where id = :id";
-//        Query query = session.createQuery(sql);
-//        query.setParameter("id", 1);
-//        NhanVien nhanVien = (NhanVien)query.getSingleResult();
-//        System.out.println(nhanVien);
+//        String sql = "from NhanVien where id = 4";
+//        NhanVien nhanVien = (NhanVien)session.createQuery(sql).uniqueResult();
+//        nhanVien.setFullName("obama");
+//        session.update(nhanVien);
 
+        //Updata database with the way 2: quit, but only one param id
+        Session session = sessionFactory.getCurrentSession();
+        NhanVien nhanVien = (NhanVien)session.get(NhanVien.class, 4);
+        nhanVien.setFullName("new obama");
+        session.update(nhanVien);
         return "home";
-//        Session session = sessionFactory.openSession();
-//        session.beginTransaction();
+    }
+//    @PostMapping
+
+//    Update database
+//    public String updateEmployee(){
+//        Session session = sessionFactory.getCurrentSession();
+//        String sql = "from Nhanvien where id = 4";
+//        NhanVien nhanVien = (NhanVien)session.createQuery(sql).uniqueResult();
+//        nhanVien.setFullName("obama");
+//        session.update(nhanVien);
+//        return "home";
+//    }
+//    @Autowired
+////    SessionFactory sessionFactory;//Se lien he toi IoC, tim id giong sessionFactory
+//    // SessionFactory chua giao thuc ket noi database
+////    //Se return mot session
+//    @GetMapping("/")
+////    @Transactional //De thuc hien commit va rollback, cua spring framewword
+//    public String Default(){
+//
+////        Session session = sessionFactory.getCurrentSession();
 ////        String sql = "from NhanVien where id = :id";
 ////        Query query = session.createQuery(sql);
-////        query.setParameter("id",1);
-////        List<NhanVien> nhanViens = query.getResultList();
-////        for (NhanVien nhanVien :
-////                nhanViens) {
-////            System.out.println(nhanVien);
-////        }
-//        session.close();
+////        query.setParameter("id", 1);
+////        NhanVien nhanVien = (NhanVien)query.getSingleResult();
+////        System.out.println(nhanVien);
+//
+//        return "home";
+////        Session session = sessionFactory.openSession();
+////        session.beginTransaction();
+//////        String sql = "from NhanVien where id = :id";
+//////        Query query = session.createQuery(sql);
+//////        query.setParameter("id",1);
+//////        List<NhanVien> nhanViens = query.getResultList();
+//////        for (NhanVien nhanVien :
+//////                nhanViens) {
+//////            System.out.println(nhanVien);
+//////        }
+////        session.close();
+//
 
 
-
-    }
+//    }
 
 }

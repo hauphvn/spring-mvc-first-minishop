@@ -195,9 +195,11 @@
         </div>
         <div class="col-md-4 col-sm-4  wow fadeInLeft">
             <span class="title-footer">GÓP Ý</span><br/>
-            <input class="footer-command" type="text" placeholder="Email"/>
-            <textarea class="footer-command" rows="4" cols="30" placeholder="Nhập nội dung"></textarea>
-            <button type="submit" style="width: 100%; font-weight: bold;">Gửi</button>
+            <form action="" method="post">
+                <input name="fullname" class="footer-command" type="text" placeholder="Email"/>
+                <textarea name="age" class="footer-command" rows="4" cols="30" placeholder="Nhập nội dung"></textarea>
+                <button type="submit" style="width: 100%; font-weight: bold;">Gửi</button>
+            </form>
         </div>
     </div>
 </div>
