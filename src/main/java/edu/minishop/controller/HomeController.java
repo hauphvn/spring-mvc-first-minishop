@@ -1,6 +1,7 @@
 package edu.minishop.controller;
 
 import edu.minishop.model.NhanVien;
+import edu.minishop.model.SanPham;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,10 @@ public class HomeController {
 
     @Autowired
     SessionFactory sessionFactory;
+
     @GetMapping
     @Transactional
-    public String Default(){
+    public String Default() {
 
         //Updata database with the way 1
 //        Session session = sessionFactory.getCurrentSession();
@@ -29,11 +31,14 @@ public class HomeController {
 //        nhanVien.setFullName("obama");
 //        session.update(nhanVien);
 
-        //Updata database with the way 2: quit, but only one param id
+//        One to One relationship
         Session session = sessionFactory.getCurrentSession();
-        NhanVien nhanVien = (NhanVien)session.get(NhanVien.class, 4);
-        nhanVien.setFullName("new obama");
-        session.update(nhanVien);
+        SanPham sanPham = new SanPham("Book 2");
+
+        NhanVien nhanVien = new NhanVien("Trump2",12);
+        sanPham.setNhanVien(nhanVien);
+
+        session.save(sanPham);
         return "home";
     }
 //    @PostMapping
