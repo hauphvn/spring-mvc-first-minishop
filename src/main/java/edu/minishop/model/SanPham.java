@@ -1,6 +1,7 @@
 package edu.minishop.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "SanPham")
 public class SanPham {
@@ -9,9 +10,22 @@ public class SanPham {
     private int id;
     private String name;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "HoaDon_SanPham",
+            joinColumns = {@JoinColumn(name = "idSanPham", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "idHoaDon", referencedColumnName = "id")})
+    Set<HoaDon> hoaDons;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employeeId")
     NhanVien nhanVien;
+
+    public Set<HoaDon> getHoaDons() {
+        return hoaDons;
+    }
+
+    public void setHoaDons(Set<HoaDon> hoaDons) {
+        this.hoaDons = hoaDons;
+    }
 
     public int getId() {
         return id;
@@ -48,4 +62,6 @@ public class SanPham {
     public SanPham(String name) {
         this.name = name;
     }
+
+
 }

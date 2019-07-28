@@ -1,5 +1,6 @@
 package edu.minishop.controller;
 
+import edu.minishop.model.HoaDon;
 import edu.minishop.model.NhanVien;
 import edu.minishop.model.SanPham;
 import org.hibernate.Session;
@@ -36,18 +37,30 @@ public class HomeController {
 //        One to One relationship
         Session session = sessionFactory.getCurrentSession();
 
-        NhanVien nhanVien = new NhanVien("Trump3",13);
-        Set<SanPham> sanPhams = new HashSet<>();
-        SanPham sanPham1 = new SanPham("Meat 1");
-        SanPham sanPham2 = new SanPham("Meat 2");
-        SanPham sanPham3 = new SanPham("Meat 3");
+//        Set<SanPham> sanPhams = new HashSet<>();
+        SanPham sanPham1 = new SanPham("Meat 5");
+//        SanPham sanPham2 = new SanPham("Meat 5");
+//        SanPham sanPham3 = new SanPham("Meat 6");
 
-        sanPhams.add(sanPham1);
-        sanPhams.add(sanPham2);
-        sanPhams.add(sanPham3);
+//        sanPhams.add(sanPham1);
+//        sanPhams.add(sanPham2);
+//        sanPhams.add(sanPham3);
 
-        nhanVien.setSanPhams(sanPhams);
-        session.save(nhanVien);
+        Set<HoaDon> hoaDons = new HashSet<>();
+        HoaDon hoaDon1 = new HoaDon("Hoa don 4");
+        HoaDon hoaDon2 = new HoaDon("Hoa don 2");
+        HoaDon hoaDon3 = new HoaDon("Hoa don 3");
+//
+        hoaDons.add(hoaDon1);
+        hoaDons.add(hoaDon2);
+        hoaDons.add(hoaDon3);
+
+        sanPham1.setHoaDons(hoaDons);
+        session.save(sanPham1);
+//        session.save(hoaDon1);
+//        sanPham1.setHoaDons(hoaDons);
+
+//        session.save(sanPham1);
         return "home";
     }
 //    @PostMapping
