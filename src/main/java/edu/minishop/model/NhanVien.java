@@ -1,10 +1,9 @@
 package edu.minishop.model;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity(name="NhanVien")
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity(name = "NhanVien")
 public class NhanVien {
 
     @Id
@@ -12,6 +11,21 @@ public class NhanVien {
     private int id;
     private String fullname;
     private int age;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "employeeId")
+    Set<SanPham> sanPhams;
+
+    public NhanVien(Set<SanPham> sanPhams) {
+        this.sanPhams = sanPhams;
+    }
+
+    public Set<SanPham> getSanPhams() {
+        return sanPhams;
+    }
+
+    public void setSanPhams(Set<SanPham> sanPhams) {
+        this.sanPhams = sanPhams;
+    }
 
     public int getId() {
         return id;
@@ -47,6 +61,6 @@ public class NhanVien {
 
     @Override
     public String toString() {
-        return id + " - "+ fullname + " - " + age;
+        return id + " - " + fullname + " - " + age;
     }
 }

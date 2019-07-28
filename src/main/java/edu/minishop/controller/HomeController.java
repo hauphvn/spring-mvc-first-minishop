@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Query;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/")
@@ -33,12 +35,19 @@ public class HomeController {
 
 //        One to One relationship
         Session session = sessionFactory.getCurrentSession();
-        SanPham sanPham = new SanPham("Book 2");
 
-        NhanVien nhanVien = new NhanVien("Trump2",12);
-        sanPham.setNhanVien(nhanVien);
+        NhanVien nhanVien = new NhanVien("Trump3",13);
+        Set<SanPham> sanPhams = new HashSet<>();
+        SanPham sanPham1 = new SanPham("Meat 1");
+        SanPham sanPham2 = new SanPham("Meat 2");
+        SanPham sanPham3 = new SanPham("Meat 3");
 
-        session.save(sanPham);
+        sanPhams.add(sanPham1);
+        sanPhams.add(sanPham2);
+        sanPhams.add(sanPham3);
+
+        nhanVien.setSanPhams(sanPhams);
+        session.save(nhanVien);
         return "home";
     }
 //    @PostMapping
