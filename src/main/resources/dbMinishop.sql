@@ -7,7 +7,7 @@ create table EMPLOYEE(
 id int auto_increment,
 name varchar(30) CHARACTER SET utf8,
 address varchar(200) CHARACTER SET utf8,
-gender tinyint,
+gender bit,
 identification char(14),
 idPosition int,
 email varchar(30),
@@ -61,12 +61,12 @@ startTime varchar(50),
 endTime varchar(50),
 description text,
 form text,
+discount int,
 primary key(id)
 );
 create table DETAILPROMOTION(
 idPromotion int,
 idProduct int,
-discount int,
 primary key(idProduct, idPromotion),
 constraint FK_DETAILPROMOTION_PROMOTION foreign key(idPromotion) references PROMOTION(id),
 constraint FK_DETAILPROMOTION_PRODUCT foreign key(idProduct) references PRODUCT(id)
@@ -76,7 +76,7 @@ id int auto_increment,
 nameCustomer varchar(30) CHARACTER SET utf8,
 phoneNumber char(12),
 addreddDelivery varchar(200) CHARACTER SET utf8,
-status tinyint,
+status bit,
 dateCreate varchar(50),
 primary key(id)
 );

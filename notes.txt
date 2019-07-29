@@ -108,3 +108,42 @@ idDetailProduct: integer: khoa ngoai DETAILPRODUCT
 amount: integer
 totalPrice: varchar(100)
 Primary key: idInvoice,idDetailProduct
+
+------------------Chu y trong tao class trong hibernate---------
+--Trong qua trinh tao class trong model, ta gap truong hop class co
+2 @id lam khoa chinh ta su dung nhieu cach, o day ta su dung
+@Embeddable
+
+Vi du class:
+@Entity(name = "DETAILINVOICE")
+public class DetailInvoice {
+    @Id
+    private int idInvoice;
+    @Id
+    private int idDetailProduct;
+    private int amount;
+    private String totalPrice;
+}
+
+
+B1. ta tao mot class:
+@Embeddable
+DetailInvoiceId{
+        private int idInvoice;
+        private int idDetailProduct;
+}
+
+B2. Ta embeddedId no vao class DetailInvoice
+@Entity(name = "DETAILINVOICE")
+public class DetailInvoice {
+    @EmbeddedId
+    private DetailInvoiceId detailInvoiceId;
+    private int amount;
+    private String totalPrice;
+}
+
+---Khi tao class lien quan den table ma lai tap, tu nhieu table voi nhau
+ta chu y:
+Neu bang lai tap do chi gom nhung key tu nhung table goc, thi ta
+su dung @JoinTable
+Nguoc lai ta phai tao class java giong voi table lai tap do
