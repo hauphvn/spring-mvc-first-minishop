@@ -26,18 +26,12 @@
                 <span>Đăng kí</span>
             </div>
             <div id="form-login">
-                <form action="" method="post">
-                    <input name="username" class="meterial-text-input input-icon-email" placeholder="Email" type="text"> <br/>
-                    <input name="password" class="meterial-text-input input-icon-password" placeholder="Password" type="password"><br/>
-                    <input class="meterial-submit-input" type="submit" value="Đăng Nhập"><br/>
-                </form>
-                <c:if test="${statusLogin == 'success'}">
-                    <span>Login success</span>
-                </c:if>
-                <c:if test="${statusLogin == 'fail'}">
-                    <span>Login fail</span>
-                </c:if>
+                    <input id="username" name="username" class="meterial-text-input input-icon-email" placeholder="Email" type="text"> <br/>
+                    <input id="password" name="password" class="meterial-text-input input-icon-password" placeholder="Password" type="password"><br/><br/>
+                    <button id="btnLogin" class="meterial-submit-input"/>Đăng Nhập<br/>
+
             </div>
+            <span id = "resultCheckLogin"></span>
             <div id="logo-social">
                 <span><img src='<c:url value="/resources/imgs/facebook.png" />' alt=""></span>
                 <span><img src='<c:url value="/resources/imgs/google-plus.png" />' alt=""></span>
@@ -46,4 +40,5 @@
     </div>
 </div>
 </body>
+<jsp:include page="footer.jsp"/>
 </html>

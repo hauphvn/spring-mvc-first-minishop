@@ -159,3 +159,21 @@ Khi add @Transaction thi spring se phat sinh proxy bao quanh cac transaction
 khi do se phat sinh loi khi truy van, co 2 cach fix:
 C1: Xoa caching
 C2: ta chi dinh class co @transaction them @Proxy
+
+-------------Tim hieu Ajax-------------
+Giup cho cung ta khong can reload page
+Ajax se mo mot page va xu ly ngam
+Bien: can thiet
+url:
+Data: cho phep gui tham so den server, xem du lieu tren trinh duyet ngam
+contentType: json..
+dataType:
+
+KHONG NEN:
+De qua nhieu url trong Ajax
+
+NEN:
+Tao 1 class controller dong vai tro la API va this class chi duoc goi boi Ajax
+This class API chi khai bao duong dan cho url cua Ajax
+
+------------
