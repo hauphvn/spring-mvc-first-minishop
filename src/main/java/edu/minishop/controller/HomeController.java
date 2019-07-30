@@ -15,6 +15,7 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/")
+@SessionAttributes("username")
 public class HomeController {
     @GetMapping
     public String Default(){

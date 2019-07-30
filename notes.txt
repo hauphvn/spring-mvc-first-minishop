@@ -176,4 +176,17 @@ NEN:
 Tao 1 class controller dong vai tro la API va this class chi duoc goi boi Ajax
 This class API chi khai bao duong dan cho url cua Ajax
 
-------------
+------------Session login --------------
+Spring 4: su dung annotation Session
+Class nao muon luu Session thi them @SessionAttributes
+@SessionAttributes("user")
+public class LoginController{
+
+}
+Class nao muon su dung Session do trong Controller thi
+@GetMapping("/info")
+public String userInfo(@SessionAttribute("tenSession") User user{
+....
+....
+return "user";
+}

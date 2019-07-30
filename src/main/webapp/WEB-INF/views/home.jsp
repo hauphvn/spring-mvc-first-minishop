@@ -17,7 +17,6 @@
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-center">
                     <ul class="navbar-nav mr-auto">
@@ -44,14 +43,18 @@
                         </li>
                     </ul>
                 </div>
+
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item"><a class="nav-link" href="#">ĐĂNG KÝ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="dangnhap/">ĐĂNG NHẬP</a></li>
+<%--                    <li class="nav-item"><a class="nav-link" href="#">ĐĂNG KÝ</a></li>--%>
+                    <li class="nav-item"><a class="nav-link" href="dangnhap/">ĐĂNG NHẬP
+                    <li class="nav-item"><a class="nav-link" href="dangnhap/">${username}
+                    </a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><img
                             src='<c:url value="/resources/imgs/white-cart.ico"/> ' alt=""></a></li>
                 </ul>
             </div>
         </nav>
+
         <div class="event-header container wow flash">
             <span>Ngày 1/1 đến 2/3</span><br/>
             <span style="font-size: 50px">Mua 1 tặng 1</span><br/>
