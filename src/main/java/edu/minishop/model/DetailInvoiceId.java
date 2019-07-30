@@ -2,9 +2,10 @@ package edu.minishop.model;
 
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
-public class DetailInvoiceId {
+public class DetailInvoiceId implements Serializable {
     private int idInvoice;
     private int idDetailProduct;
 

@@ -16,6 +16,9 @@ import java.util.Set;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-
+    @GetMapping
+    public String Default(){
+        return "home";
+    }
 
 }

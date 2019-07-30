@@ -20,6 +20,8 @@
     <mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926"/>
     <mvc:annotation-driven enable-matrix-variables="true" />
     <context:component-scan base-package="edu.minishop.controller"/>
+    <context:component-scan base-package="edu.minishop.service"/>
+    <context:component-scan base-package="edu.minishop.dao"/>
 <!--    <import resource="classpath:context.xml"/>-->
     <!--    START KET NOI DEN MYSQL-->
     <bean id="dataSource"

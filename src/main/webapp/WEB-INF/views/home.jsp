@@ -46,7 +46,7 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item"><a class="nav-link" href="#">ĐĂNG KÝ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">ĐĂNG NHẬP</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dangnhap/">ĐĂNG NHẬP</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><img
                             src='<c:url value="/resources/imgs/white-cart.ico"/> ' alt=""></a></li>
                 </ul>

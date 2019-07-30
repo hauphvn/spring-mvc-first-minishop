@@ -26,11 +26,17 @@
                 <span>Đăng kí</span>
             </div>
             <div id="form-login">
-                <form action="">
-                    <input class="meterial-text-input input-icon-email" placeholder="Email" type="text"> <br/>
-                    <input class="meterial-text-input input-icon-password" placeholder="Password" type="password"><br/>
+                <form action="" method="post">
+                    <input name="username" class="meterial-text-input input-icon-email" placeholder="Email" type="text"> <br/>
+                    <input name="password" class="meterial-text-input input-icon-password" placeholder="Password" type="password"><br/>
                     <input class="meterial-submit-input" type="submit" value="Đăng Nhập"><br/>
                 </form>
+                <c:if test="${statusLogin == 'success'}">
+                    <span>Login success</span>
+                </c:if>
+                <c:if test="${statusLogin == 'fail'}">
+                    <span>Login fail</span>
+                </c:if>
             </div>
             <div id="logo-social">
                 <span><img src='<c:url value="/resources/imgs/facebook.png" />' alt=""></span>

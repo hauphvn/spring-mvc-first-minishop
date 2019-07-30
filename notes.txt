@@ -147,3 +147,15 @@ ta chu y:
 Neu bang lai tap do chi gom nhung key tu nhung table goc, thi ta
 su dung @JoinTable
 Nguoc lai ta phai tao class java giong voi table lai tap do
+
+---------DAO---------
+DAO la de tuong tac voi database : @Repository
+Service tuong tac voi dao : @Service
+Controller tuong tac voi Service : @Controller
+View tuong tac voi Controller
+
+-------Proxy-------------
+Khi add @Transaction thi spring se phat sinh proxy bao quanh cac transaction
+khi do se phat sinh loi khi truy van, co 2 cach fix:
+C1: Xoa caching
+C2: ta chi dinh class co @transaction them @Proxy
