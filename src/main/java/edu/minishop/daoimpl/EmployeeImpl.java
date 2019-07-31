@@ -1,5 +1,7 @@
 package edu.minishop.daoimpl;
 
+import edu.minishop.model.Employee;
+
 public interface EmployeeImpl {
-    boolean handleLogin(String username, String password);
+    Employee handleLogin(String username, String password);
 }

@@ -18,19 +18,19 @@ public class EmployeeDao implements EmployeeImpl {
 
     @Override
     @Transactional
-    public boolean handleLogin(String username, String password) {
+    public Employee handleLogin(String username, String password) {
         Session session = sessionFactory.getCurrentSession();
         String sql = "from EMPLOYEE where username = '"+username+"' and password = '"+password+"'";
         try {
             Employee employee = (Employee)session.createQuery(sql).getSingleResult();
             if (employee != null){
-                return true;
+                return employee;
             }else{
-                return false;
+                return null;
             }
         }catch (Exception e){
             System.out.println("Error from DAO employee: "+ e.getMessage());
-            return false;
+            return null;
         }
     }
 }

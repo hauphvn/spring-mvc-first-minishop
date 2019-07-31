@@ -22,7 +22,10 @@ $(document).ready(function(){
             },
             success: function(value){
                 if (value == "true"){
-                    $("#resultCheckLogin").append("Success")
+                    //get link page current
+                    linkCurrent = window.location.href;
+                    linkHomePage = linkCurrent.replace("dangnhap/","");
+                    window.location = linkHomePage;
                 }else{
                     $("#resultCheckLogin").append("Fail")
                 }
