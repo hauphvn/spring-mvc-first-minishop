@@ -22,13 +22,21 @@
         </div>
         <div id="input-login">
             <div id="text-top-right" class="header-login">
-                <span class="login-actived">Đăng nhập</span>/
-                <span>Đăng kí</span>
+                <span id="sign-in" class="login-active" style="cursor: pointer">Đăng nhập</span>/
+                <span id="sign-up" style="cursor: pointer">Đăng kí</span>
             </div>
-            <div id="form-login">
-                    <input id="username" name="username" class="meterial-text-input input-icon-email" placeholder="Email" type="text"> <br/>
-                    <input id="password" name="password" class="meterial-text-input input-icon-password" placeholder="Password" type="password"><br/><br/>
-                    <button id="btnLogin" class="meterial-submit-input"/>Đăng Nhập<br/>
+            <div id="frame-sign-in" class="form-login">
+                <input id="username-sign-in" name="username" class="meterial-text-input input-icon-email" placeholder="Email" type="text"> <br/>
+                <input id="password-sign-in" name="password" class="meterial-text-input input-icon-password" placeholder="Password" type="password"><br/><br/>
+                <button id="btnSignIn" class="meterial-submit-input"/>Đăng Nhập<br/>
+
+            </div>
+
+            <div id="frame-sign-up" class="form-login">
+                <input id="username-sign-up" name="username" class="meterial-text-input input-icon-email" placeholder="Username" type="text"> <br/>
+                <input id="password-sign-up" name="password" class="meterial-text-input input-icon-email" placeholder="Password" type="text"> <br/>
+                <input id="repassword" name="repassword" class="meterial-text-input input-icon-password" placeholder="Re password" type="password"><br/><br/>
+                <button id="btnSignUp" class="meterial-submit-input"/>Đăng ký<br/>
 
             </div>
             <span id = "resultCheckLogin"></span>

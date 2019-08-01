@@ -11,6 +11,7 @@ $(document).ready(function(){
     });
 
     $("#btnLogin").click(function () {
+
         var username = $("#username").val();
         var password = $("#password").val();
         $.ajax({
@@ -31,5 +32,19 @@ $(document).ready(function(){
                 }
             }
         })
+    });
+
+    $("#sign-in").click(function(){
+        $(this).addClass("login-active");
+        $("#sign-up").removeClass("login-active");
+        $("#frame-sign-up").css("display","none");
+        $("#frame-sign-in").show();
+
+    });
+    $("#sign-up").click(function(){
+        $(this).addClass("login-active");
+        $("#sign-in").removeClass("login-active");
+        $("#frame-sign-in").css("display","none");
+        $("#frame-sign-up").show();
     });
 })

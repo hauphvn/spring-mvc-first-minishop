@@ -41,10 +41,6 @@ body {
 }
 
 #input-login {
-
-}
-
-#input-login {
     padding-left: 16px;
     padding-right: 16px;
     width: 100%;
@@ -59,11 +55,11 @@ body {
     margin-bottom: 16px;
 }
 
-#form-login input[type=text] {
+.form-login input[type=text] {
     margin-bottom: 8px;
 }
 
-#form-login input[type=submit] {
+.form-login input[type=submit] {
     margin-top: 24px;
     color: white;
     text-transform: uppercase;
@@ -97,7 +93,7 @@ body {
 }
 
 .input-icon-email {
-    background: url(../imgs/mail.png) no-repeat scroll 4px;
+    background: url(../imgs/mail.png) no-repeat 4px;
     height: 38px;
     border: none;
     background-color: #d8d8d8;
@@ -124,8 +120,8 @@ body {
 }
 
 
-.login-actived {
-    color: red;
+.login-active {
+    color: red !important;
 }
 
 .header-login {
@@ -138,6 +134,24 @@ body {
 
 .jqueryRed {
     background-color: red;
+}
+
+.login-registry{
+    background-color: #f8f9fa; /* Green */
+    border: none;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#frame-sign-up{
+    display: none;
 }
 
 /*ket thuc dinh dang login*/
@@ -279,4 +293,6 @@ body {
     text-align: center;
     margin-top: 5px;
 }
+
+
 /*end css homepage*/
