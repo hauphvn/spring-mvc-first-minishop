@@ -1,8 +1,3 @@
-// $(document).ready(function(){
-//     $("#colRed").click(function () {
-//        $(this).addClass("jqueryOrange")
-//     });
-// })
 
 $(document).ready(function(){
     $("#colRed").click(function () {
@@ -10,10 +5,10 @@ $(document).ready(function(){
        alert(text);
     });
 
-    $("#btnLogin").click(function () {
+    $("#btnSignIn").click(function () {
 
-        var username = $("#username").val();
-        var password = $("#password").val();
+        var username = $("#username-sign-in").val();
+        var password = $("#password-sign-in").val();
         $.ajax({
             url:"/Minishop/api/checkLogin",
             type: "get",
@@ -28,13 +23,15 @@ $(document).ready(function(){
                     linkHomePage = linkCurrent.replace("dangnhap/","");
                     window.location = linkHomePage;
                 }else{
-                    $("#resultCheckLogin").append("Fail")
+                    $("#resultCheckLogin").text("Sai thông tin đăng nhập");
                 }
             }
         })
     });
 
     $("#sign-in").click(function(){
+        $("#resultSignUpOrSignIn").hide();
+        $("#resultCheckLogin").hide();
         $(this).addClass("login-active");
         $("#sign-up").removeClass("login-active");
         $("#frame-sign-up").css("display","none");
@@ -42,9 +39,13 @@ $(document).ready(function(){
 
     });
     $("#sign-up").click(function(){
+        $("#resultSignUpOrSignIn").hide();
+        $("#resultCheckLogin").hide(); z
         $(this).addClass("login-active");
         $("#sign-in").removeClass("login-active");
         $("#frame-sign-in").css("display","none");
         $("#frame-sign-up").show();
     });
+
+
 })

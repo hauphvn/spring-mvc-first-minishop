@@ -33,4 +33,15 @@ public class EmployeeDao implements EmployeeImpl {
             return null;
         }
     }
+
+    @Override
+    @Transactional
+    public boolean addEmploy(Employee employee) {
+        Session session = sessionFactory.getCurrentSession();
+        int statusAdd = (int) session.save(employee);
+        if(statusAdd > 0){//Because of id auto increase
+            return true;
+        }
+        return false;
+    }
 }

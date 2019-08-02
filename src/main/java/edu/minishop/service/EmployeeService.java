@@ -15,4 +15,9 @@ public class EmployeeService implements EmployeeImpl {
     public Employee handleLogin(String username, String password) {
         return employeeDao.handleLogin(username, password);
     }
+
+    @Override
+    public boolean addEmploy(Employee employee) {
+        return employeeDao.addEmploy(employee);
+    }
 }

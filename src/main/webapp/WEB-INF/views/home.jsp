@@ -93,102 +93,22 @@
         <span>SẢN PHẨM HOT</span>
     </div>
     <div class="row">
-        <div class="col-md-3 col-sm-6">
-            <div class="product-home wow zoomIn">
-                <div class="card-deck product-cart">
-                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">Áo sơ mi</h4>
-                        <%--                       <p class="card-text">Some example text.</p>--%>
-                        <a href="#" class="btn btn-primary">150K</a>
+        <c:forEach var="product" items="${listProducts}">
+            <div class="col-md-3 col-sm-6">
+                <div class="product-home wow zoomIn">
+                    <div class="card-deck product-cart">
+                        <img class="card-img-top" src='<c:url value="/resources/imgs/ao-thun/${product.getImage()}" />' alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">${product.getName()}</h4>
+                                <%--                       <p class="card-text">Some example text.</p>--%>
+                            <a href="#" class="btn btn-primary">${product.getPrice()} VNĐ</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-home wow zoomIn">
-                <div class="card-deck product-cart">
-                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">Áo sơ mi</h4>
-                        <%--                        <p class="card-text">Some example text.</p>--%>
-                        <a href="#" class="btn btn-primary">150K</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-home wow zoomIn">
-                <div class="card-deck product-cart">
-                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">Áo sơ mi</h4>
-                        <%--                        <p class="card-text">Some example text.</p>--%>
-                        <a href="#" class="btn btn-primary">150K</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-home wow zoomIn">
-                <div class="card-deck product-cart">
-                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">Áo sơ mi</h4>
-                        <%--                        <p class="card-text">Some example text.</p>--%>
-                        <a href="#" class="btn btn-primary">150K</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-home wow zoomIn">
-                <div class="card-deck product-cart">
-                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">Áo sơ mi</h4>
-                        <%--                        <p class="card-text">Some example text.</p>--%>
-                        <a href="#" class="btn btn-primary">150K</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-home wow zoomIn">
-                <div class="card-deck product-cart">
-                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">Áo sơ mi</h4>
-                        <%--                        <p class="card-text">Some example text.</p>--%>
-                        <a href="#" class="btn btn-primary">150K</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-home wow zoomIn">
-                <div class="card-deck product-cart">
-                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">Áo sơ mi</h4>
-                        <%--                        <p class="card-text">Some example text.</p>--%>
-                        <a href="#" class="btn btn-primary">150K</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="product-home wow zoomIn">
-                <div class="card-deck product-cart">
-                    <img class="card-img-top" src='<c:url value="/resources/imgs/icon-tshirt.png" />' alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">Áo sơ mi</h4>
-                        <%--                        <p class="card-text">Some example text.</p>--%>
-                        <a href="#" class="btn btn-primary">150K</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </c:forEach>
+
+
 
 
     </div>

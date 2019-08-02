@@ -1,3 +1,6 @@
+/*
+* Cung cap api cho ajax xu ly ngam
+* */
 package edu.minishop.controller;
 
 import edu.minishop.model.Employee;
