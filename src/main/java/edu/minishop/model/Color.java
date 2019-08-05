@@ -9,15 +9,15 @@ import javax.persistence.Id;
 public class Color {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int color_id;
     private String name;
 
-    public int getId() {
-        return id;
+    public int getColor_id() {
+        return color_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setColor_id(int color_id) {
+        this.color_id = color_id;
     }
 
     public String getName() {

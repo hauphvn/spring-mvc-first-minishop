@@ -7,7 +7,7 @@ import java.util.Set;
 public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int invoice_id;
     private String name;
     private String phoneNumber;
     private String addressDelivery;
@@ -15,7 +15,7 @@ public class Invoice {
     private String dataCreate;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "detailInvoiceId")
     private Set<DetailInvoice> detailInvoices;
 
     public Set<DetailInvoice> getDetailInvoices() {
@@ -26,12 +26,12 @@ public class Invoice {
         this.detailInvoices = detailInvoices;
     }
 
-    public int getId() {
-        return id;
+    public int getInvoice_id() {
+        return invoice_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setInvoice_id(int invoice_id) {
+        this.invoice_id = invoice_id;
     }
 
     public String getName() {

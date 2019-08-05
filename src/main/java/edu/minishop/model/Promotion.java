@@ -7,7 +7,7 @@ import java.util.Set;
 public class Promotion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int promotion_id;
     private String name;
     private String startTime;
     private String endTime;
@@ -17,8 +17,8 @@ public class Promotion {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "DETAILPROMOTION",
-    joinColumns = {@JoinColumn(name = "idPromotion", referencedColumnName ="id")},
-    inverseJoinColumns = {@JoinColumn(name = "idProduct", referencedColumnName = "id")})
+            joinColumns = {@JoinColumn(name = "idPromotion", referencedColumnName ="promotion_id")},
+            inverseJoinColumns = {@JoinColumn(name = "idProduct", referencedColumnName = "product_id")})
     private Set<Product> products;
 
     public Set<Product> getProducts() {
@@ -37,12 +37,12 @@ public class Promotion {
         this.discount = discount;
     }
 
-    public int getId() {
-        return id;
+    public int getPromotion_id() {
+        return promotion_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPromotion_id(int promotion_id) {
+        this.promotion_id = promotion_id;
     }
 
     public String getName() {

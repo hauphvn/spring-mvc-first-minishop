@@ -6,27 +6,28 @@ import javax.persistence.*;
 public class DetailProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
-    private Product product;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
-    private Size size;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
-    private Color color;
-
+    private int detail_product_id;
     private int amount;
     private String dayOfEntry;
 
-    public int getId() {
-        return id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idProduct")
+    private Product product;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idSize")
+    private Size size;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idColor")
+    private Color color;
+
+    public int getDetail_product_id() {
+        return detail_product_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDetail_product_id(int detail_product_id) {
+        this.detail_product_id = detail_product_id;
     }
 
     public Product getProduct() {

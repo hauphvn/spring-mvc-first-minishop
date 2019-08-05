@@ -7,25 +7,24 @@ import java.util.Set;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
-    Category category;
-
+    private int product_id;
     private String name;
     private String price;
     private String description;
     private String image;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idCategory")
+    private Category category;
+
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idProduct")
     private Set<DetailProduct> detailProducts;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "DETAILPROMOTION",
-            joinColumns = {@JoinColumn(name = "idProduct", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "idPromotion", referencedColumnName = "id")})
+            joinColumns = {@JoinColumn(name = "idProduct", referencedColumnName = "product_id")},
+            inverseJoinColumns = {@JoinColumn(name = "idPromotion", referencedColumnName = "promotion_id")})
     private Set<Promotion> promotions;
 
     public Set<DetailProduct> getDetailProducts() {
@@ -44,12 +43,12 @@ public class Product {
         this.promotions = promotions;
     }
 
-    public int getId() {
-        return id;
+    public int getProduct_id() {
+        return product_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
     }
 
     public Category getCategory() {

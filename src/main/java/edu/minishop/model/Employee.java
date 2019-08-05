@@ -6,27 +6,25 @@ import javax.persistence.*;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int employee_id;
     private String name;
     private String address;
     private boolean gender;
     private String identification;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
-    private Position position;
-
     private String email;
     private String username;
     private String password;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPosition")
+    private Position position;
 
-    public int getId() {
-        return id;
+    public int getEmployee_id() {
+        return employee_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
     }
 
     public String getName() {

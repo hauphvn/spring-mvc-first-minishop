@@ -17,4 +17,10 @@ public class ProductService implements ProductImpl {
     public List<Product> getAllLimit(int first, int max) {
         return productDao.getAllLimit(first,max);
     }
+
+    @Override
+    public List<Product> getAllDetailProductById(int id) {
+
+        return productDao.getAllDetailProductById(id);
+    }
 }

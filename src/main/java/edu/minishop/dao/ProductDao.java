@@ -1,6 +1,7 @@
 package edu.minishop.dao;
 
 import edu.minishop.daoimpl.ProductImpl;
+import edu.minishop.model.DetailProduct;
 import edu.minishop.model.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -33,6 +35,30 @@ public class ProductDao implements ProductImpl {
             products = query.getResultList();
         }catch (Exception e){
             System.out.println("Loi truy cap du lieu PRODUCT: "+ e.toString());
+        }
+        return products;
+    }
+
+    @Override
+    @Transactional
+    public List<Product> getAllDetailProductById(int id) {
+        List<Product> products = new ArrayList<>();
+        Session session = sessionFactory.getCurrentSession();
+        String sql = "from PRODUCT where product_id = " + id;
+        try {
+           products =  session.createQuery(sql).getResultList();
+        }catch (Exception e){
+            System.out.println("Error query database from getAllDetailProductById: " + e.toString());
+        }
+        for (Product product :
+                products) {
+            for (DetailProduct detailProduct: product.getDetailProducts()
+                 ) {
+                System.out.print(detailProduct.getProduct().getName()+
+                        " "+detailProduct.getColor().getName()+" "+
+                        detailProduct.getSize().getName()+"\n");
+
+            }
         }
         return products;
     }

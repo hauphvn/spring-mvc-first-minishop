@@ -10,15 +10,15 @@ import javax.persistence.Id;
 public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int positionm_id;
     private String name;
 
-    public int getId() {
-        return id;
+    public int getPositionm_id() {
+        return positionm_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPositionm_id(int positionm_id) {
+        this.positionm_id = positionm_id;
     }
 
     public String getName() {

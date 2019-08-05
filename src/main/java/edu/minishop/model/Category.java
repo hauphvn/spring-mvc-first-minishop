@@ -7,12 +7,12 @@ import java.util.Set;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int category_id;
     private String name;
     private String image;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "category_id")
     Set<Product> products;
 
     public Set<Product> getProducts() {
@@ -23,12 +23,12 @@ public class Category {
         this.products = products;
     }
 
-    public int getId() {
-        return id;
+    public int getCategory_id() {
+        return category_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCategory_id(int category_id) {
+        this.category_id = category_id;
     }
 
     public String getName() {
