@@ -41,25 +41,15 @@ public class ProductDao implements ProductImpl {
 
     @Override
     @Transactional
-    public List<Product> getAllDetailProductById(int id) {
-        List<Product> products = new ArrayList<>();
+    public Product getAllDetailProductById(int id) {
+        Product product = new Product();
         Session session = sessionFactory.getCurrentSession();
         String sql = "from PRODUCT where product_id = " + id;
         try {
-           products =  session.createQuery(sql).getResultList();
+            product = (Product) session.createQuery(sql).getSingleResult();
         }catch (Exception e){
             System.out.println("Error query database from getAllDetailProductById: " + e.toString());
         }
-        for (Product product :
-                products) {
-            for (DetailProduct detailProduct: product.getDetailProducts()
-                 ) {
-                System.out.print(detailProduct.getProduct().getName()+
-                        " "+detailProduct.getColor().getName()+" "+
-                        detailProduct.getSize().getName()+"\n");
-
-            }
-        }
-        return products;
+        return product;
     }
 }

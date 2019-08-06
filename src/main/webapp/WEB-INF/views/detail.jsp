@@ -73,11 +73,29 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row container-detail">
         <div class="col-md-2 col-sm-3" style="background-color:yellow">danh muc</div>
-        <div class="col-md-3 col-sm-3" style="background-color:red">hinh anh</div>
-        <div class="col-md-5 col-sm-3" style="background-color:green">table chi tiet</div>
-        <div class="col-md-2 col-sm-3" style="background-color:pink">mo ta</div>
+        <div class="col-md-3 col-sm-3" >
+            <img class="img-responsive" src='<c:url value="/resources/imgs/products/${product.getImage()}"/> ' alt="Hinh anh chi tiet san pham">
+        </div>
+        <div class="col-md-5 col-sm-3" >
+            <h4>${product.getName()}</h4>
+            <h5 class="price">đ ${product.getPrice()}</h5>
+            <table class="table table-condensed">
+                <tbody>
+                <c:forEach var="detail" items="${detailProducts}">
+                    <tr>
+                        <td>${detail.getColor().getName()}, ${detail.getSize().getName()}</td>
+                        <td>Còn ${detail.getAmount()} sản phẩm</td>
+                        <td>Mua ngay</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2 col-sm-3" >
+            <span>${product.getDescription()}</span>
+        </div>
     </div>
 </div>
 

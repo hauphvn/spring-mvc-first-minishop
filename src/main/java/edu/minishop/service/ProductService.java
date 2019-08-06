@@ -19,7 +19,7 @@ public class ProductService implements ProductImpl {
     }
 
     @Override
-    public List<Product> getAllDetailProductById(int id) {
+    public Product getAllDetailProductById(int id) {
 
         return productDao.getAllDetailProductById(id);
     }

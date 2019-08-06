@@ -10,8 +10,21 @@ body {
     font-size: 14px;
 }
 /*Dinh dang phan detail*/
-
+.price{
+    color: red;
+}
+.container-detail{
+    background: #f8f8f8;
+    padding: 15px;
+    margin: 0 !important;
+}
+.img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
 /*Ket thuc dinh dang detail*/
+
 /*dinh dang phan login*/
 #body-login {
     background-color: aliceblue;

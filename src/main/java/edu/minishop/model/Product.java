@@ -17,7 +17,7 @@ public class Product {
     @JoinColumn(name = "idCategory")
     private Category category;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idProduct")
     private Set<DetailProduct> detailProducts;
 

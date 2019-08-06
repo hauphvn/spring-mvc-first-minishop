@@ -97,7 +97,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="product-home wow zoomIn">
                     <div class="card-deck product-cart">
-                        <a href="detail/${product.getProduct_id()}/"><img class="card-img-top" src='<c:url value="/resources/imgs/ao-thun/${product.getImage()}" />' alt="Card image"></a>
+                        <a href="detail/${product.getProduct_id()}/"><img class="card-img-top" src='<c:url value="/resources/imgs/products/${product.getImage()}" />' alt="Card image"></a>
                         <div class="card-body">
                             <h4 class="card-title">${product.getName()}</h4>
                             <a href="#" class="btn btn-primary">${product.getPrice()} VNĐ</a>
