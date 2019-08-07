@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div  class="container-fluid">
+<div class="container-fluid">
     <div style="background-color: black">
         <nav id="nav-homepage" class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="/Minishop/">MINISHOP</a>
@@ -74,26 +74,47 @@
 
 <div class="container-fluid">
     <div class="row container-detail">
-        <div class="col-md-2 col-sm-3" style="background-color:yellow">danh muc</div>
-        <div class="col-md-3 col-sm-3" >
-            <img class="img-responsive" src='<c:url value="/resources/imgs/products/${product.getImage()}"/> ' alt="Hinh anh chi tiet san pham">
+        <div class="col-md-2 col-sm-3">
+            <h4>Danh mục</h4>
+
+            <ul class="list-group">
+                <c:forEach var="category" items="${categories}">
+                    <a href="#">
+                        <li class="list-group-item" style="background:transparent">${category.getName()}</li>
+                    </a>
+                </c:forEach>
+            </ul>
+
         </div>
-        <div class="col-md-5 col-sm-3" >
+        <div class="col-md-3 col-sm-3">
+            <img class="img-responsive" src='<c:url value="/resources/imgs/products/${product.getImage()}"/> '
+                 alt="Hinh anh chi tiet san pham">
+        </div>
+        <div class="col-md-5 col-sm-3">
             <h4>${product.getName()}</h4>
             <h5 class="price">đ ${product.getPrice()}</h5>
             <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th>Màu/Kích cỡ</th>
+                    <th>Số lượng</th>
+                    <th></th>
+                </tr>
+                </thead>
                 <tbody>
                 <c:forEach var="detail" items="${detailProducts}">
                     <tr>
                         <td>${detail.getColor().getName()}, ${detail.getSize().getName()}</td>
                         <td>Còn ${detail.getAmount()} sản phẩm</td>
-                        <td>Mua ngay</td>
+                        <td>
+                            <button class="btn btn-success">Thêm vào giỏ hàng</button>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </div>
-        <div class="col-md-2 col-sm-3" >
+        <div class="col-md-2 col-sm-3">
             <span>${product.getDescription()}</span>
         </div>
     </div>

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS    )
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class EmployeeDao implements EmployeeImpl {
     @Autowired
     private SessionFactory sessionFactory;
