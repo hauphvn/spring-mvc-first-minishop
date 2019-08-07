@@ -5,6 +5,18 @@ $(document).ready(function(){
        alert(text);
     });
 
+    $(".btn-addCart").click(function () {
+        var nameProduct = $("#nameProduct").text();
+        var priceProduct = $("#priceProduct").attr("data-value");
+        var colorCode = $(this).closest("tr").find("#rowSingleCart-Color-Size").attr("color-value");
+        var sizeCode = $(this).closest("tr").find("#rowSingleCart-Color-Size").attr("size-value");
+        var nameColorSize = $(this).closest("tr").find("#rowSingleCart-Color-Size").text();
+        var amountProduct = $(this).closest("tr").find("#rowSingleCart-Amount").attr("data-value");
+
+        alert(nameProduct + "-"+priceProduct +"-"+nameColorSize+"-"+colorCode+"-"+sizeCode+"-"+amountProduct);
+
+    });
+
     $("#btnSignIn").click(function () {
 
         var username = $("#username-sign-in").val();

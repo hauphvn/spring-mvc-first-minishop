@@ -91,8 +91,8 @@
                  alt="Hinh anh chi tiet san pham">
         </div>
         <div class="col-md-5 col-sm-3">
-            <h4>${product.getName()}</h4>
-            <h5 class="price">đ ${product.getPrice()}</h5>
+            <h4 id="nameProduct">${product.getName()}</h4>
+            <h5 id="priceProduct" data-value = " ${product.getPrice()}" class="price">đ ${product.getPrice()}</h5>
             <table class="table table-condensed">
                 <thead>
                 <tr>
@@ -103,11 +103,11 @@
                 </thead>
                 <tbody>
                 <c:forEach var="detail" items="${detailProducts}">
-                    <tr>
-                        <td>${detail.getColor().getName()}, ${detail.getSize().getName()}</td>
-                        <td>Còn ${detail.getAmount()} sản phẩm</td>
+                    <tr id="rowSingleCart">
+                        <td id="rowSingleCart-Color-Size" color-value="${detail.getColor(). getColor_id()}" size-value="${detail.getSize(). getSize_id()}">${detail.getColor().getName()}, ${detail.getSize().getName()}</td>
+                        <td id="rowSingleCart-Amount" data-value="${detail.getAmount()}">Còn ${detail.getAmount()} sản phẩm</td>
                         <td>
-                            <button class="btn btn-success">Thêm vào giỏ hàng</button>
+                            <button class="btn btn-success btn-addCart">Thêm vào giỏ hàng</button>
                         </td>
                     </tr>
                 </c:forEach>

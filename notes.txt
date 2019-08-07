@@ -190,3 +190,15 @@ public String userInfo(@SessionAttribute("tenSession") User user{
 ....
 return "user";
 }
+
+------Problem tao gio hang---------
+Cach 1: tao database table gio hang, luu cac thong tin can thiet
+Se xoa row khi hoan thanh viec mua hang
+--> khong toi uu performance
+Cach 2: Su dung session va ajax
+Trong custome.js ta xu li ijax de lay cac thuoc tinh tren dung chinh xac row ma
+click them vao gio hang
+
+Trong Apicontroller ta tao class themgiohang ....co cac thuoc tinh can luu lai cho
+gio hang
+
