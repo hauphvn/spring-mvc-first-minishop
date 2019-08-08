@@ -38,19 +38,13 @@ $(document).ready(function () {
                 price: priceProduct,
                 amount: amountProduct
             },
-            success: function () {
-                
-            }
-        }).done(function () {
-            $.ajax({
-                url:"/Minishop/api/itemInCart",
-                type:"get",
-                success: function (value) {
+            success: function (value) {//return value =  amount of cart
+                if (value != ""){
                     $("#showAmountItemInCart").addClass("amount-item-cart")
                         .html("<span>"+ value + "</span>");
                 }
-            })
-        });
+            }
+        })
 
     });
 

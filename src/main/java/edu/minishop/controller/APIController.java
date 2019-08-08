@@ -37,7 +37,7 @@ public class APIController {
 
     @GetMapping("addCart")
     @ResponseBody
-    public void addProductToCart(
+    public String addProductToCart(
             @RequestParam int idProduct,
             @RequestParam int idSize,
             @RequestParam int idColor,
@@ -48,6 +48,7 @@ public class APIController {
             @RequestParam int amount,
             HttpSession httpSession
     ) {
+        String result = "";
         List<Cart> carts = new ArrayList<>();
 
         Cart cart = new Cart();
@@ -63,6 +64,7 @@ public class APIController {
         if (httpSession.getAttribute("sessionCart") == null) {
             carts.add(cart);
             httpSession.setAttribute("sessionCart", carts);
+            result = carts.size()+"";
         } else {
             carts = (List<Cart>) httpSession.getAttribute("sessionCart");
             int sizeCarts = carts.size();
@@ -80,9 +82,10 @@ public class APIController {
 
             if (!isCodeExist) {
                 carts.add(cart);
+                result = carts.size()+"";
             }
         }
-
+        return  result;
     }
     @GetMapping("itemInCart")
     @ResponseBody
