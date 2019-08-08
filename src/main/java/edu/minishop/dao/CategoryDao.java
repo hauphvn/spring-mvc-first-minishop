@@ -21,7 +21,6 @@ public class CategoryDao implements CategoryImpl {
     @Override
     @Transactional
     public List<Category> getAll() {
-        System.out.println("vao day");
         List<Category> categories = new ArrayList<>();
         Session session = sessionFactory.getCurrentSession();
         String sql = "from CATEGORY";
@@ -29,11 +28,6 @@ public class CategoryDao implements CategoryImpl {
             categories = session.createQuery(sql).getResultList();
         } catch (Exception e){
             System.out.println("Error from query database CategoryDao: " + e.toString());
-        }
-        if (categories == null){
-            System.out.println("nullllllllll");
-        }else {
-            System.out.println(categories);
         }
         return categories;
     }

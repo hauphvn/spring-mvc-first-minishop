@@ -23,6 +23,17 @@ body {
     max-width: 100%;
     height: auto;
 }
+.amount-item-cart{
+    color:white;
+    background-color: red;
+    height: 20px;
+    width: 20px;
+    border-radius: 40px;
+    text-align: center;
+    margin-top: -37px;
+    margin-left: 15px;
+    font-weight: bold;
+}
 /*Ket thuc dinh dang detail*/
 
 /*dinh dang phan login*/

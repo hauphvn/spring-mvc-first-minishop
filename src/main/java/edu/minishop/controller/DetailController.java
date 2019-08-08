@@ -11,7 +11,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Set;
 
@@ -23,10 +25,11 @@ public class DetailController {
     @Autowired
     private CategoryService categoryService;
     @GetMapping("/{id}")
-    public String Default(@PathVariable int id, ModelMap modelMap){
+    public String Default(@PathVariable int id, ModelMap modelMap, HttpSession httpSession){
         Product product = productService.getAllDetailProductById(id);
         Set<DetailProduct> detailProducts = product.getDetailProducts();
         List<Category> categories = categoryService.getAll();
+
         modelMap.addAttribute("product",product);
         modelMap.addAttribute("detailProducts",detailProducts);
         modelMap.addAttribute("categories",categories);

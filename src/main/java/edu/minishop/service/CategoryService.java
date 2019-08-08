@@ -14,7 +14,6 @@ public class CategoryService implements CategoryImpl {
     private CategoryDao categoryDao;
     @Override
     public List<Category> getAll() {
-        System.out.println("vao categoryService");
         return categoryDao.getAll();
     }
 }

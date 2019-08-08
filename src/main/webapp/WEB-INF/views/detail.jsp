@@ -64,7 +64,11 @@
                         </c:otherwise>
                     </c:choose>
                     <li class="nav-item"><a class="nav-link" href="#"><img
-                            src='<c:url value="/resources/imgs/white-cart.ico"/> ' alt=""></a></li>
+                            src='<c:url value="/resources/imgs/white-cart.ico"/> ' alt="">
+                            <div id="showAmountItemInCart"></div>
+
+                    </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -91,7 +95,7 @@
                  alt="Hinh anh chi tiet san pham">
         </div>
         <div class="col-md-5 col-sm-3">
-            <h4 id="nameProduct">${product.getName()}</h4>
+            <h4 id="nameProduct" code-product-value="${product.getProduct_id()}">${product.getName()}</h4>
             <h5 id="priceProduct" data-value = " ${product.getPrice()}" class="price">đ ${product.getPrice()}</h5>
             <table class="table table-condensed">
                 <thead>
@@ -104,7 +108,7 @@
                 <tbody>
                 <c:forEach var="detail" items="${detailProducts}">
                     <tr id="rowSingleCart">
-                        <td id="rowSingleCart-Color-Size" color-value="${detail.getColor(). getColor_id()}" size-value="${detail.getSize(). getSize_id()}">${detail.getColor().getName()}, ${detail.getSize().getName()}</td>
+                        <td id="rowSingleCart-Color-Size" color-code-value="${detail.getColor(). getColor_id()}" size-code-value="${detail.getSize(). getSize_id()}" color-name-value="${detail.getColor(). getName()}" size-name-value="${detail.getSize(). getName()}">${detail.getColor().getName()}, ${detail.getSize().getName()}</td>
                         <td id="rowSingleCart-Amount" data-value="${detail.getAmount()}">Còn ${detail.getAmount()} sản phẩm</td>
                         <td>
                             <button class="btn btn-success btn-addCart">Thêm vào giỏ hàng</button>
