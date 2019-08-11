@@ -46,6 +46,7 @@ public class APIController {
             @RequestParam String nameSize,
             @RequestParam String price,
             @RequestParam int amount,
+            @RequestParam String urlImage,
             HttpSession httpSession
     ) {
         String result = "";
@@ -60,6 +61,7 @@ public class APIController {
         cart.setNameSize(nameSize);
         cart.setPrice(price);
         cart.setAmount(1);
+        cart.setImage(urlImage);
 
         if (httpSession.getAttribute("sessionCart") == null) {
             carts.add(cart);

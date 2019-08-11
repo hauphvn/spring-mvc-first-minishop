@@ -63,7 +63,7 @@
                                 ĐĂNG NHẬP</a></li>
                         </c:otherwise>
                     </c:choose>
-                    <li class="nav-item"><a class="nav-link" href="#"><img
+                    <li class="nav-item"><a class="nav-link" href="/Minishop/cart"><img
                             src='<c:url value="/resources/imgs/white-cart.ico"/> ' alt="">
                             <div id="showAmountItemInCart"></div>
 
@@ -91,7 +91,7 @@
 
         </div>
         <div class="col-md-3 col-sm-3">
-            <img class="img-responsive" src='<c:url value="/resources/imgs/products/${product.getImage()}"/> '
+            <img id="urlImage" urlImage-value ="/resources/imgs/products/${product.getImage()}" class="img-responsive" src='<c:url value="/resources/imgs/products/${product.getImage()}"/> '
                  alt="Hinh anh chi tiet san pham">
         </div>
         <div class="col-md-5 col-sm-3">

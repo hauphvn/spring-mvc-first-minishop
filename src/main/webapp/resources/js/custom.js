@@ -4,6 +4,21 @@ $(document).ready(function () {
         alert(text);
     });
 
+    getTotalPrice();
+
+    function getTotalPrice(){
+        var sumPriceProductCart = 0;
+        $(".priceOrigin").each(function () {
+            var monoPrice = $(this).text().replace(/,/g,'');
+            monoPrice = parseFloat(monoPrice);
+            sumPriceProductCart = sumPriceProductCart + monoPrice;
+        });
+        sumPriceProductCart = sumPriceProductCart.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+        $('.totalPrice').html(
+            sumPriceProductCart+ " VNĐ");
+    }
+
+
     $.ajax({
         url:"/Minishop/api/itemInCart",
         type:"get",
@@ -14,6 +29,17 @@ $(document).ready(function () {
             }
         }
     })
+    
+    $(".amountProduct").change(function () {
+        var amountOrigin = $(this).val();
+        var priceOrigin = $(this).closest("tr").find(".priceOrigin").attr("data-priceOrigin");
+
+        var priceUpdated = (parseInt(priceOrigin) * amountOrigin);
+        var formatCurrency = priceUpdated.toFixed(3).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,").toString();
+        $(this).closest("tr").find(".priceOrigin").html(formatCurrency.replace('.',',') + ' đ');
+        getTotalPrice();
+
+    });
 
     $(".btn-addCart").click(function () {
         var nameProduct = $("#nameProduct").text();
@@ -24,7 +50,7 @@ $(document).ready(function () {
         var nameColor = $(this).closest("tr").find("#rowSingleCart-Color-Size").attr("color-name-value");
         var nameSize = $(this).closest("tr").find("#rowSingleCart-Color-Size").attr("size-name-value");
         var amountProduct = $(this).closest("tr").find("#rowSingleCart-Amount").attr("data-value");
-
+        var urlImage = $("#urlImage").attr("urlImage-value");
         $.ajax({
             url: "/Minishop/api/addCart",
             type: "Get",
@@ -36,7 +62,8 @@ $(document).ready(function () {
                 nameColor: nameColor,
                 nameSize: nameSize,
                 price: priceProduct,
-                amount: amountProduct
+                amount: amountProduct,
+                urlImage: urlImage
             },
             success: function (value) {//return value =  amount of cart
                 if (value != ""){

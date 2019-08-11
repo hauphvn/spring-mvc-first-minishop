@@ -9,6 +9,15 @@ public class Cart {
     private String nameSize;
     private String price;
     private int amount;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public int getIdProduct() {
         return idProduct;

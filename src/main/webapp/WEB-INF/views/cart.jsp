@@ -80,17 +80,53 @@
     <div class="row">
         <div class="col-sm-12 col-md-6">
             <br>
-            <h4>Chi tiết sản phẩm trong giỏ hàng</h4>
-            <table class="table table-striped">
-                <tbody>
-                <tr>
-                    <td>HInh anh</td>
-                    <td>thong tin san pham</td>
-                    <td>gia tien</td>
-                    <td>xoa san pham</td>
-                </tr>
-                </tbody>
-            </table>
+            <c:if test="${empty carts}">
+                <h4>Bạn chưa chọn sản phẩm nào</h4>
+            </c:if>
+            <c:if test="${not empty carts}">
+                <h4>Chi tiết sản phẩm trong giỏ hàng</h4>
+                <table class="table table-striped">
+                    <col>
+                    <col>
+                    <col width="90">
+                    <col>
+                    <col>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th>Bỏ khỏi giỏ hàng</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="product" items="${carts}">
+                        <tr>
+                            <td><img src='<c:url value="${product.getImage()}"/> ' style="width: 50px;" alt="Detail image product"></td>
+                            <td>${product.getNameProduct()}|${product.getNameColor()}|${product.getNameSize()}</td>
+                            <td class="UpdateAmountProduct">
+<%--                                <div class="form-group">--%>
+                                    <input class="amountProduct form-control" style="text-align: center;" type="number" min="1" value="${product.getAmount()}">
+<%--                                </div>--%>
+                            </td>
+                            <td class="priceOrigin" data-priceOrigin="${product.getPrice()}" >
+                                    ${product.getPrice()} <span> đ</span>
+                            </td>
+                            <td>
+                                <form action="" id="formRemoveItem" method="post">
+                                    <a href="#"><img style="cursor: pointer" src='<c:url value="/resources/imgs/remove.png"/> ' alt="icon-remove-product"></a>
+                                </form>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    <tr style="font-weight: bold">
+                        <td colspan="3" class="text-right">Tổng cộng:</td>
+                        <td class="totalPrice" colspan="3"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </c:if>
         </div>
         <div class="col-sm-12 col-md-6">
             <br>
@@ -147,12 +183,12 @@
                 </div>
                 <div class="form-group">
                     <label for="txtNote">Ghi chú</label>
-                    <textarea name="txtNote" id="txtNote" rows="2"></textarea>
+                    <textarea class="form-control" name="txtNote" id="txtNote" rows="2"></textarea>
                 </div>
             </form>
-            <button class="btn btn-info fw">Đặt hàng</button>
+            <button class="btn btn-info fw form-control">Đặt hàng</button>
             <hr>
-            <a href="#" class="btn btn-warning fw">Cần sản phẩm khác? Tiếp tục mua hàng</a>
+            <a href="#" class="btn btn-warning fw form-control">Cần sản phẩm khác? Tiếp tục mua hàng</a>
         </div>
     </div>
 </div>
