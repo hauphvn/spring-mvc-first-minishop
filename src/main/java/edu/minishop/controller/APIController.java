@@ -5,6 +5,7 @@ package edu.minishop.controller;
 
 import edu.minishop.model.Cart;
 import edu.minishop.model.Employee;
+import edu.minishop.model.Product;
 import edu.minishop.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,7 +67,7 @@ public class APIController {
         if (httpSession.getAttribute("sessionCart") == null) {
             carts.add(cart);
             httpSession.setAttribute("sessionCart", carts);
-            result = carts.size()+"";
+            result = carts.size() + "";
         } else {
             carts = (List<Cart>) httpSession.getAttribute("sessionCart");
             int sizeCarts = carts.size();
@@ -84,19 +85,62 @@ public class APIController {
 
             if (!isCodeExist) {
                 carts.add(cart);
-                result = carts.size()+"";
+                result = carts.size() + "";
             }
         }
-        return  result;
+        return result;
     }
+
     @GetMapping("itemInCart")
     @ResponseBody
-    public String countItemInCart(HttpSession httpSession){
+    public String countItemInCart(HttpSession httpSession) {
         String result = "";
-        if (httpSession.getAttribute("sessionCart") != null){
+        if (httpSession.getAttribute("sessionCart") != null) {
             List<Cart> carts = (List<Cart>) httpSession.getAttribute("sessionCart");
-            result = carts.size()+"";
+            result = carts.size() + "";
         }
         return result;
+    }
+
+    @GetMapping("updateAmount")
+    @ResponseBody
+    public String UpdateAmountProductInCart(HttpSession httpSession, int amount, int idProduct, int idSize, int idColor) {
+        int index = isExitstProduct(httpSession, idProduct, idSize, idColor);
+        if (index != -1) {
+            List<Cart> carts = (List<Cart>) httpSession.getAttribute("sessionCart");
+            Cart cart = carts.get(index);
+            cart.setAmount(amount);
+            return "true";
+        }
+        return "false";
+    }
+
+    @GetMapping("removeProductFromCart")
+    @ResponseBody
+    public String removeProductFromCart(HttpSession httpSession, int idProduct, int idColor, int idSize){
+        int index = isExitstProduct(httpSession, idProduct, idSize, idColor);
+        if (index != -1){
+            List<Cart> carts = (List<Cart>) httpSession.getAttribute("sessionCart");
+            carts.remove(index);
+            System.out.println("xoa thanh cong");
+            return "true";
+        }
+        System.out.println("xoa that bai");
+        return "false";
+    }
+
+    public int isExitstProduct(HttpSession httpSession, int idProduct, int idSize, int idColor) {
+        if (httpSession.getAttribute("sessionCart") != null) {
+            List<Cart> carts = (List<Cart>) httpSession.getAttribute("sessionCart");
+            int index = 0;
+            for (Cart cart :
+                    carts) {
+                if (cart.getIdProduct() == idProduct && cart.getIdColor() == idColor && cart.getIdSize() == idSize) {
+                    return index;
+                }
+                index++;
+            }
+        }
+        return -1;
     }
 }

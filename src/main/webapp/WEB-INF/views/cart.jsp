@@ -102,7 +102,10 @@
                     </thead>
                     <tbody>
                     <c:forEach var="product" items="${carts}">
-                        <tr>
+                        <tr class="checkPriceProduct" data-value="dfsdf">
+                            <td class="idProduct" data-idProduct="${product.getIdProduct()}" style="display: none"></td>
+                            <td class="idSize" data-idSize="${product.getIdSize()}" style="display: none"></td>
+                            <td class="idColor" data-idColor="${product.getIdColor()}" style="display: none"></td>
                             <td><img src='<c:url value="${product.getImage()}"/> ' style="width: 50px;" alt="Detail image product"></td>
                             <td>${product.getNameProduct()}|${product.getNameColor()}|${product.getNameSize()}</td>
                             <td class="UpdateAmountProduct">
@@ -114,10 +117,12 @@
                                     ${product.getPrice()} <span> đ</span>
                             </td>
                             <td>
-                                <form action="" id="formRemoveItem" method="post">
-                                    <a href="#"><img style="cursor: pointer" src='<c:url value="/resources/imgs/remove.png"/> ' alt="icon-remove-product"></a>
-                                </form>
+                                <a class="removeProductFromCart" href="#"><img style="cursor: pointer" src='<c:url value="/resources/imgs/remove.png"/> ' alt="icon-remove-product"></a>
+<%--                                <form action="" id="formRemoveItem" method="post">--%>
+<%--                                    <a href="#"><img style="cursor: pointer" src='<c:url value="/resources/imgs/remove.png"/> ' alt="icon-remove-product"></a>--%>
+<%--                                </form>--%>
                             </td>
+                            <br>
                         </tr>
                     </c:forEach>
                     <tr style="font-weight: bold">
