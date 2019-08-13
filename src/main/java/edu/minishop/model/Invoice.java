@@ -8,15 +8,33 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int invoice_id;
-    private String name;
+    private String nameCustomer;
     private String phoneNumber;
     private String addressDelivery;
     private boolean status;
-    private String dataCreate;
+    private String dateCreated;
+    private String deliveryForm;
+    private String notes;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "detailInvoiceId")
     private Set<DetailInvoice> detailInvoices;
+
+    public String getDeliveryForm() {
+        return deliveryForm;
+    }
+
+    public void setDeliveryForm(String deliveryForm) {
+        this.deliveryForm = deliveryForm;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 
     public Set<DetailInvoice> getDetailInvoices() {
         return detailInvoices;
@@ -34,12 +52,12 @@ public class Invoice {
         this.invoice_id = invoice_id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameCustomer() {
+        return nameCustomer;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
     }
 
     public String getPhoneNumber() {
@@ -66,12 +84,12 @@ public class Invoice {
         this.status = status;
     }
 
-    public String getDataCreate() {
-        return dataCreate;
+    public String getDateCreated() {
+        return dateCreated;
     }
 
-    public void setDataCreate(String dataCreate) {
-        this.dataCreate = dataCreate;
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
     public Invoice() {

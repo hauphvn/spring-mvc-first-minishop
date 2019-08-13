@@ -1,6 +1,7 @@
 package edu.minishop.model;
 
 public class Cart {
+    private int idDetailProduct;
     private int idProduct;
     private int idSize;
     private int idColor;
@@ -10,6 +11,15 @@ public class Cart {
     private String price;
     private int amount;
     private String image;
+
+
+    public int getIdDetailProduct() {
+        return idDetailProduct;
+    }
+
+    public void setIdDetailProduct(int idDetailProduct) {
+        this.idDetailProduct = idDetailProduct;
+    }
 
     public String getImage() {
         return image;

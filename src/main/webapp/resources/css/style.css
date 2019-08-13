@@ -9,6 +9,36 @@ body {
     font-family: Roboto;
     font-size: 14px;
 }
+
+/*Dinh dang nav-menu*/
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 65px;
+    background-color: black;
+}
+
+/* Links inside the navbar */
+.nav-menu a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.nav-menu a:hover {
+    font-weight: bolder;
+}
+
+.nav-menu-content {
+    margin-top: 65px !important; /* Add a top margin to avoid content overlay */
+}
+/*End Dinh dang nav-menu*/
 /*Dinh dang phan detail*/
 .price{
     color: red;
@@ -184,8 +214,9 @@ body {
 
 /*css homepage*/
 #header {
-    background: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.42)),
-    url("../imgs/bgHeader2.png ") no-repeat center center;
+    background:url("../imgs/bgHeader2.png ") no-repeat center center;
+    /*background: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.42)),*/
+    /*url("../imgs/bgHeader2.png ") no-repeat center center;*/
     height: 662px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -213,10 +244,18 @@ body {
 /*.navbar-center{*/
 /*    margin-left: 35% !important;*/
 /*}*/
-
+.promotion{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
 .event-header{
+
     text-align: center;
-    margin-top: 216px;
+    padding-top: 30px;
+    width: 345px;
+    height: 200px;
+    background-color: grey;
 }
 
 .event-header >span{

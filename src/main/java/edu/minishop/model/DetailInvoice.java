@@ -10,7 +10,7 @@ public class DetailInvoice {
     @EmbeddedId
     private DetailInvoiceId detailInvoiceId;
     private int amount;
-    private String totalPrice;
+    private String price;
 
     public DetailInvoiceId getDetailInvoiceId() {
         return detailInvoiceId;
@@ -28,12 +28,12 @@ public class DetailInvoice {
         this.amount = amount;
     }
 
-    public String getTotalPrice() {
-        return totalPrice;
+    public String getPrice() {
+        return price;
     }
 
-    public void setTotalPrice(String totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setPrice(String totalPrice) {
+        this.price = totalPrice;
     }
 
     public DetailInvoice() {

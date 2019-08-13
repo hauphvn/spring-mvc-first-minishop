@@ -94,6 +94,7 @@ $(document).ready(function () {
 
     $(".btn-addCart").click(function () {
         var nameProduct = $("#nameProduct").text();
+        var idProductDetail = $(this).attr("data-idProductDetail");
         var codeProduct = $("#nameProduct").attr("code-product-value");
         var priceProduct = $("#priceProduct").attr("data-value");
         var colorCode = $(this).closest("tr").find("#rowSingleCart-Color-Size").attr("color-code-value");
@@ -114,7 +115,8 @@ $(document).ready(function () {
                 nameSize: nameSize,
                 price: priceProduct,
                 amount: amountProduct,
-                urlImage: urlImage
+                urlImage: urlImage,
+                idProductDetail: idProductDetail
             },
             success: function (value) {//return value =  amount of cart
                 if (value != ""){
