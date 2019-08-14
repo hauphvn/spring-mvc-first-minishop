@@ -29,8 +29,9 @@
                             THỜI TRANG
                         </a>
                         <div class="dropdown-menu dropdown-menu-none" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <c:forEach var="category" items="${categories}">
+                                <a class="dropdown-item" href='<c:url value="/product/${category.getCategory_id()}/${category.getName()}"/> ' style="background: transparent">${category.getName()}</a>
+                            </c:forEach>
                         </div>
                     </li>
                 </ul>

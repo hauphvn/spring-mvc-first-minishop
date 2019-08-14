@@ -27,7 +27,7 @@
 
             <ul class="list-group">
                 <c:forEach var="category" items="${categories}">
-                    <a href="#">
+                    <a href='<c:url value="/product/${category.getCategory_id()}/${category.getName()}"/> '>
                         <li class="list-group-item" style="background:transparent">${category.getName()}</li>
                     </a>
                 </c:forEach>

@@ -52,4 +52,19 @@ public class ProductDao implements ProductImpl {
         }
         return product;
     }
+
+    @Override
+    @Transactional
+    public List<Product> getByIdCategory(int idCategory) {
+
+        Session session = sessionFactory.getCurrentSession();
+        String sql = "From PRODUCT WHERE category.category_id = "+ idCategory +"";
+        try {
+            List<Product> products = (List<Product>) session.createQuery(sql).getResultList();
+            return products;
+        }catch (Exception e){
+            System.out.println("Error get product by idCategory: "+ e.toString());
+        }
+        return null;
+    }
 }
