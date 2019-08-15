@@ -1,10 +1,8 @@
 package edu.minishop.dao;
 
 import edu.minishop.daoimpl.ProductImpl;
-import edu.minishop.log.LogFactory;
-import edu.minishop.model.DetailProduct;
+import edu.minishop.log.Log4jFactory;
 import edu.minishop.model.Product;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.logging.Logger;
 
 @Repository
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -36,9 +32,9 @@ public class ProductDao implements ProductImpl {
             query.setFirstResult(first);
             query.setMaxResults(max);
             products = query.getResultList();
-            LogFactory.getLogger().info("Get product limit from database");
-            LogFactory.getLogger().warning("Get product limit from database");
-            LogFactory.getLogger().severe("Get product limit from database");
+            Log4jFactory.getLogger().info("Get product limit from database");
+//            Log4jFactory.getLogger().warning("Get product limit from database");
+//            Log4jFactory.getLogger().severe("Get product limit from database");
         }catch (Exception e){
             System.out.println("Loi truy cap du lieu PRODUCT: "+ e.toString());
         }
