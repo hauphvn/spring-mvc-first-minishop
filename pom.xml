@@ -24,6 +24,7 @@
         <spring.context.version>5.1.5.RELEASE</spring.context.version>
         <spring.orm.version>5.1.5.RELEASE</spring.orm.version>
         <log4j.version>1.2.17</log4j.version>
+        <webapp-runner.version>8.5.11.2</webapp-runner.version>
     </properties>
 
     <dependencies>
@@ -122,6 +123,30 @@
                     <target>${jdk.version}</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <!--Webapp Runner-->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>copy</goal></goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.github.jsimone</groupId>
+                                    <artifactId>webapp-runner</artifactId>
+                                    <version>${webapp-runner.version}</version>
+                                    <destFileName>webapp-runner.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
