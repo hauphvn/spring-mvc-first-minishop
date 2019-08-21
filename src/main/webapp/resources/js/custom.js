@@ -1,11 +1,31 @@
 $(document).ready(function () {
     $("#colRed").click(function () {
         var text = $(this).attr("data-text");
-        alert(text);
     });
     checkAmountItemCart();
     checkPriceProduct();
     getTotalPrice();
+
+
+    function clickPagination(numberPage) {
+        var result = null;
+        $.ajax({
+            url: "/Minishop/api/pagination",
+            type: "get",
+            data: {
+                curPage: numberPage
+
+            },
+            dataType: "html",
+            async: false,
+            success: function (outHtml) {
+                result = outHtml;
+
+            }
+        });
+        return result;
+    }
+
 
     function checkPriceProduct() {
         $(".checkPriceProduct").each(function () {
@@ -14,45 +34,82 @@ $(document).ready(function () {
             var priceOrigin = $(this).find(".priceOrigin").attr("data-priceOrigin");
             var priceUpdated = (parseInt(priceOrigin) * amountOrigin);
             var formatCurrency = priceUpdated.toFixed(3).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,").toString();
-            $(this).find(".priceOrigin").html(formatCurrency.replace('.',',') + ' đ');
+            $(this).find(".priceOrigin").html(formatCurrency.replace('.', ',') + ' đ');
         });
     };
-    function getTotalPrice(){
+
+    function getTotalPrice() {
         var sumPriceProductCart = 0;
         $(".priceOrigin").each(function () {
-            var monoPrice = $(this).text().replace(/,/g,'');
+            var monoPrice = $(this).text().replace(/,/g, '');
             monoPrice = parseFloat(monoPrice);
             sumPriceProductCart = sumPriceProductCart + monoPrice;
         });
         sumPriceProductCart = sumPriceProductCart.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         $('.totalPrice').html(
-            sumPriceProductCart+ " VNĐ");
+            sumPriceProductCart + " VNĐ");
     };
 
-    function checkAmountItemCart(){
+    function checkAmountItemCart() {
         $.ajax({
-            url:"/Minishop/api/itemInCart",
-            type:"get",
+            url: "/Minishop/api/itemInCart",
+            type: "get",
             success: function (value) {
-                if (value != ""){
+                if (value != "") {
                     $("#showAmountItemInCart").addClass("amount-item-cart")
-                        .html("<span>"+ value + "</span>");
+                        .html("<span>" + value + "</span>");
                 }
             }
         })
     }
 
+    $("ul").on("click", ".currentPage", function () {
+        var curPage = $(this).attr("data-currentPage");
+        $(this).closest("ul").find(".currentPage").removeClass("active");
+        $(this).addClass("active");
+        var outHtml = clickPagination(curPage);
+        $("#choosePage").html.removeData;
+        $("#choosePage").html(outHtml);
+    });
 
+    $(".page-prev").click(function () {
+        var curPage = $(this).closest("ul").find(".active").attr("data-currentPage");
+        if (curPage > 1) {
+            curPage--;
+            var classPos = "."+curPage+"";
+            $(this).closest("ul").find(".currentPage").removeClass("active");
+            var pos =  $(this).closest("ul").find(".currentPage").attr("data-currentPage");
+            $(this).closest("ul").find(classPos).addClass("active");
+            var outHtml = clickPagination(curPage);
+            $("#choosePage").html.removeData;
+            $("#choosePage").html(outHtml);
+        }
+    });
+
+    $(".page-next").click(function () {
+        var curPage = $(this).closest("ul").find(".active").attr("data-currentPage");
+        var pageNo = $("#pageNo").attr("data-pageNo");
+        if (curPage < pageNo) {
+            curPage++;
+            var classPos = "."+curPage+"";
+            $(this).closest("ul").find(".currentPage").removeClass("active");
+            var pos =  $(this).closest("ul").find(".currentPage").attr("data-currentPage");
+            $(this).closest("ul").find(classPos).addClass("active");
+            var outHtml = clickPagination(curPage);
+            $("#choosePage").html.removeData;
+            $("#choosePage").html(outHtml);
+        }
+    });
     $(".amountProduct").change(function () {
         var amountOrigin = $(this).val();
         var codeProduct = parseInt($(this).closest("tr").find(".idProduct").attr("data-idProduct"));
         var codeColor = parseInt($(this).closest("tr").find(".idColor").attr("data-idColor"));
         var codeSize = parseInt($(this).closest("tr").find(".idSize").attr("data-idSize"));
         $.ajax({
-            url:"/Minishop/api/updateAmount",
-            type:"Get",
-            data:{
-                idProduct :codeProduct,
+            url: "/Minishop/api/updateAmount",
+            type: "Get",
+            data: {
+                idProduct: codeProduct,
                 idColor: codeColor,
                 idSize: codeSize,
                 amount: amountOrigin
@@ -63,31 +120,31 @@ $(document).ready(function () {
         var priceOrigin = $(this).closest("tr").find(".priceOrigin").attr("data-priceOrigin");
         var priceUpdated = (parseInt(priceOrigin) * amountOrigin);
         var formatCurrency = priceUpdated.toFixed(3).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,").toString();
-        $(this).closest("tr").find(".priceOrigin").html(formatCurrency.replace('.',',') + ' đ');
+        $(this).closest("tr").find(".priceOrigin").html(formatCurrency.replace('.', ',') + ' đ');
         getTotalPrice();
     });
 
     $(".removeProductFromCart").click(function () {
-        var self =  $(this);
+        var self = $(this);
         var codeProduct = parseInt($(this).closest("tr").find(".idProduct").attr("data-idProduct"));
         var codeColor = parseInt($(this).closest("tr").find(".idColor").attr("data-idColor"));
         var codeSize = parseInt($(this).closest("tr").find(".idSize").attr("data-idSize"));
         $.ajax({
-            url:"/Minishop/api/removeProductFromCart",
-            type:"Get",
-            data:{
+            url: "/Minishop/api/removeProductFromCart",
+            type: "Get",
+            data: {
                 idProduct: codeProduct,
                 idColor: codeColor,
                 idSize: codeSize
             },
             success: function (value) {
-               if (value == "true"){
-                   self.closest("tr").remove();
-                   checkAmountItemCart();
-                   getTotalPrice();
-               }else{
-                   alert(value);
-               }
+                if (value == "true") {
+                    self.closest("tr").remove();
+                    checkAmountItemCart();
+                    getTotalPrice();
+                } else {
+                    alert(value);
+                }
             }
         });
     });
@@ -119,9 +176,9 @@ $(document).ready(function () {
                 idProductDetail: idProductDetail
             },
             success: function (value) {//return value =  amount of cart
-                if (value != ""){
+                if (value != "") {
                     $("#showAmountItemInCart").addClass("amount-item-cart")
-                        .html("<span>"+ value + "</span>");
+                        .html("<span>" + value + "</span>");
                 }
             }
         })

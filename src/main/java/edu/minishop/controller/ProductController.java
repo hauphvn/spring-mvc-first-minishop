@@ -26,6 +26,7 @@ public class ProductController {
     public String getByIdCategory(ModelMap modelMap, @PathVariable int id, @PathVariable String name){
         List<Category> categories = categoryService.getAll();
         List<Product> products = productService.getByIdCategory(id);
+
         modelMap.addAttribute("categories", categories);
         modelMap.addAttribute("products", products);
         modelMap.addAttribute("nameCategory", name);

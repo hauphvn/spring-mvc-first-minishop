@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 html, body{
 	font-family: 'Roboto', sans-serif;
     font-size: 100%;
-  	overflow-x: hidden;
+  	overflow: scroll !important;
 	background-color: #edecec;
 }
 body a{
@@ -16,7 +16,7 @@ body a{
 	-moz-transition:0.5s all;
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
-	background:#011D4A!mportant;
+	/*background:#011D4A !important;*/
 }
 a:focus, a:active, a:hover ,a.dropdown-toggle{
     outline: none;
@@ -26,7 +26,7 @@ a:focus, a:active, a:hover ,a.dropdown-toggle{
 	text-decoration:none;
 }
 a {
-    background-color:none;
+    background-color:transparent;
 }
 body p{
   font-family: 'Roboto', sans-serif;
@@ -1042,7 +1042,7 @@ table {
     padding: 12px;
 }
 .table>thead>tr>th {
-    background-color: #fff;
+    /*background-color: #fff;*/
     vertical-align: middle;
     font-weight: 500;
     color: #333;
@@ -3966,7 +3966,7 @@ section#tables  p {
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 	font-size: 0.9em;
-	color: #999;
+	color: black;
 	border-top: none !important;
 }
 .tab-content > .active {
@@ -4499,7 +4499,7 @@ label.control-label {
 }
 .text a{
 	color:#000;
-	text-decoration:undrline;
+	text-decoration:underline;
 }
 .text a:hover{
 	color:#003b64;

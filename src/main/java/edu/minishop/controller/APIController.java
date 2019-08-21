@@ -7,6 +7,7 @@ import edu.minishop.model.Cart;
 import edu.minishop.model.Employee;
 import edu.minishop.model.Product;
 import edu.minishop.service.EmployeeService;
+import edu.minishop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,8 +21,12 @@ import java.util.List;
 @RequestMapping("api/")
 @SessionAttributes({"fullName", "sessionCart"})
 public class APIController {
+
+    private final static int ROW_NUMBER_PAGINATION = 6;
     @Autowired
     private EmployeeService employeeService;
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("checkLogin")
     @ResponseBody
@@ -144,5 +149,22 @@ public class APIController {
             }
         }
         return -1;
+    }
+
+    @GetMapping(path = "pagination", produces = "text/plain; charset=utf-8")
+    @ResponseBody
+    public String pagination(ModelMap modelMap, @RequestParam int curPage){
+        int fromPos = ROW_NUMBER_PAGINATION * (curPage - 1);
+        List<Product> products = productService.getAllLimitCriteria(fromPos,ROW_NUMBER_PAGINATION);
+        String html = "";
+        for (Product product :
+                products) {
+            html = html + "<tr>" +
+                    "<td>"+product.getName()+"</td> " +
+                    "<td>"+product.getCategory().getName()+"</td> " +
+                    "<td>"+product.getPrice()+"</td> " +
+                    "</tr>";
+        }
+        return html;
     }
 }
