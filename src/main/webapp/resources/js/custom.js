@@ -118,6 +118,22 @@ $(document).ready(function () {
         });
     });
 
+    var arrayFile = [];
+    $("#imageProduct").change(function (event) {
+        arrayFile = event.target.files;
+        forms = new FormData();
+        forms.append("imageFile", arrayFile[0]);
+        $.ajax({
+            url:"/Minishop/api/uploadFile",
+            type:"Post",
+            contentType:false,
+            processData: false,
+            enctype: "multipart/form-data",
+            data: forms
+
+        });
+    });
+
     $(".adding-product").click(function () {
         var nameProduct = $(".nameProduct").val();
         var idCategory = $(".idCategory").children("option:selected").val();

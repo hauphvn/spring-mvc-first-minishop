@@ -12,9 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -27,6 +33,8 @@ public class APIController {
     private EmployeeService employeeService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private ServletContext servletContext;
 
     @GetMapping("checkLogin")
     @ResponseBody
@@ -177,6 +185,24 @@ public class APIController {
         }
         return "false";
     }
+
+    @PostMapping("uploadFile")
+    @ResponseBody
+    public String uploadFile(MultipartHttpServletRequest multipartHttpServletRequest){
+        String pathToSave = servletContext.getRealPath("/resources/imgs/products/");
+        Iterator<String> stringIteratorName = multipartHttpServletRequest.getFileNames();
+        MultipartFile multipartFile = multipartHttpServletRequest.getFile(stringIteratorName.next());
+        System.out.println(pathToSave);
+
+        File fileToSave = new File(pathToSave + multipartFile.getOriginalFilename());
+        try {
+            multipartFile.transferTo(fileToSave);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "null";
+    }
+
 
 
 }
