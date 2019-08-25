@@ -232,37 +232,60 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
             <!--inner block start here-->
             <div class="inner-block">
-                <h3 style="text-align: center;">THÊM SẢN PHẨM</h3>
-              <div class="row">
-                  <div class="col-sm-12 col-md-12">
-                      <div class="form-group">
-                          <label for="nameProduct">Tên sản phẩm:</label>
-                          <input type="text" class="form-control nameProduct" id="nameProduct">
-                      </div>
-                      <div class="form-group">
-                          <label for="category">Danh mục:</label>
-                          <select class="form-control idCategory" id="category">
-                              <c:forEach var="category" items="${categories}">
-                                  <option value="${category.getCategory_id()}">${category.getName()}</option>
-                              </c:forEach>
-                          </select>
-                      </div>
-                      <div class="form-group">
-<%--                          TODO xu li input gia tien san pham--%>
-                          <label for="price">Giá tiền:</label>
-                          <input type="text" class="form-control priceProduct" id="price">
-                      </div>
-                      <div class="form-group">
-                          <label for="imageProduct">Chọn hình ảnh</label>
-                          <input type="file" class="form-control-file" id="imageProduct">
-                      </div>
-                      <div class="form-group">
-                          <label for="comment">Mô tả:</label>
-                          <textarea class="form-control" rows="5" id="comment"></textarea>
-                      </div>
-                      <button style="text-align: center;" class="btn btn-block btn-success adding-product" type="submit">THÊM</button>
-                  </div>
-              </div>
+                <div class="row" style="margin: 0 !important;">
+                    <div class="col-sm-12 col-md-12">
+                        <nav aria-label="Page navigation example">
+                            <span id="pageNo" data-pageNo="${pageNo}"></span>
+                            <ul class="pagination" >
+
+                                <c:forEach var="i" begin="1" end="${pageNo}">
+                                    <c:if test="${i == 1}">
+                                        <li class="page-prev page-link" data-page-prev="${i}"><a href="#">Trang trước</a></li>
+                                    </c:if>
+                                    <c:choose>
+                                        <c:when test = "${i == 1}">
+                                            <li class="${i} page-item currentPage active" data-currentPage="${i}"><a class="page-link" href="#">${i}</a></li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="${i} page-item currentPage" data-currentPage="${i}"><a class="page-link" href="#">${i}</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <c:if test="${i == pageNo}">
+                                        <li class="page-next page-link" data-page-next=""><a href="#">Trang kế</a></li>
+                                    </c:if>
+                                </c:forEach>
+
+                            </ul>
+                            <a href='<c:url value="/adminAddingProduct/addProductSingle"/> '>
+                                <button type="button" class="btn" style="background-color: #1B93E1; color: white; float: right;">Thêm sản phẩm</button>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <table class="table table-condensed" id="table-product">
+                            <thead>
+                            <tr>
+                                <th>Tên</th>
+                                <th>Danh mục</th>
+                                <th>Giá tiền</th>
+                                <th>Xóa</th>
+                            </tr>
+                            </thead>
+                            <tbody id="choosePage" >
+                                    <c:forEach var="product" items="${products}" begin="0" end="${rowMax - 1}">
+                                        <tr>
+                                            <td>${product.getName()}</td>
+                                            <td>${product.getCategory().getName()}</td>
+                                            <td>${product.getPrice()}</td>
+                                            <td><img class="removeProduct" data-removeProduct="${product.getProduct_id()}" style='cursor: pointer' src='<c:url value='/resources/imgs/remove.png'/> ' alt='img-remove-product'></td>
+                                        </tr>
+                                    </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             <!--inner block end here-->
 

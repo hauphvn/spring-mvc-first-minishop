@@ -95,10 +95,36 @@ $(document).ready(function () {
             $(this).closest("ul").find(".currentPage").removeClass("active");
             var pos =  $(this).closest("ul").find(".currentPage").attr("data-currentPage");
             $(this).closest("ul").find(classPos).addClass("active");
-            var outHtml = clickPagination(curPage);
             $("#choosePage").html.removeData;
             $("#choosePage").html(outHtml);
         }
+    });
+
+    $("tbody").on("click", ".removeProduct", function () {
+        var idRemove = $(this).attr("data-removeProduct");
+        idRemove = parseInt(idRemove);
+        var This = $(this);
+        // alert(idRemove);
+        $.ajax({
+            url:"/Minishop/api/deleteProductById",
+            type:"Get",
+            data:{
+                id: idRemove
+            },
+            success:function (value) {
+                if(value == "true"){}
+                This.closest("tr").remove();
+            }
+        });
+    });
+
+    $(".adding-product").click(function () {
+        var nameProduct = $(".nameProduct").val();
+        var idCategory = $(".idCategory").children("option:selected").val();
+        var price = $(".priceProduct").val();
+        var image = $("#imageProduct").val().replace(/C:\\fakepath\\/i, '');
+        var comment = $("#comment").val();
+        alert(comment);
     });
     $(".amountProduct").change(function () {
         var amountOrigin = $(this).val();

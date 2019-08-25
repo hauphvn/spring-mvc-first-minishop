@@ -163,8 +163,20 @@ public class APIController {
                     "<td>"+product.getName()+"</td> " +
                     "<td>"+product.getCategory().getName()+"</td> " +
                     "<td>"+product.getPrice()+"</td> " +
+                    "<td><img class='removeProduct' data-removeProduct='"+product.getProduct_id()+"' style='cursor: pointer' src='/Minishop/resources/imgs/remove.png ' alt='img-remove-product'></td> " +
                     "</tr>";
         }
         return html;
     }
+
+    @GetMapping("deleteProductById")
+    @ResponseBody
+    public String deleteProductById(@RequestParam int id){
+        if(productService.deleteById(id) == true){
+            return "true";
+        }
+        return "false";
+    }
+
+
 }

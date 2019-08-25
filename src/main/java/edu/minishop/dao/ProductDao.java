@@ -102,4 +102,17 @@ public class ProductDao implements ProductImpl {
         }
         return null;
     }
+
+    @Override
+    @Transactional
+    public boolean deleteById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Product product = session.get(Product.class, id);
+        if (product != null){
+            System.out.println(product.getName());
+            return true;
+        }
+        return false;
+
+    }
 }

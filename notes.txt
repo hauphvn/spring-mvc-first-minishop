@@ -1,3 +1,4 @@
+
 -----tx--------
 De tao cac transaction
 Tai sao phai tao transaction:

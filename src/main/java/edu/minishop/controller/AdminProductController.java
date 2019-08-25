@@ -1,6 +1,8 @@
 package edu.minishop.controller;
 
+import edu.minishop.model.Category;
 import edu.minishop.model.Product;
+import edu.minishop.service.CategoryService;
 import edu.minishop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ public class AdminProductController {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private CategoryService categoryService;
     private final static int ROW_NUMBER_PAGINATION = 6;
     @GetMapping()
     public String Default(ModelMap modelMap){
@@ -24,6 +28,13 @@ public class AdminProductController {
         modelMap.addAttribute("products", products);
         modelMap.addAttribute("choosenPage", 1);
         modelMap.addAttribute("rowMax", ROW_NUMBER_PAGINATION);
+        return "admin-manageProduct";
+    }
+
+    @GetMapping("addProductSingle")
+    public String addProduct(ModelMap modelMap){
+        List<Category> categories = categoryService.getAll();
+        modelMap.addAttribute("categories", categories);
         return "admin-addProduct";
     }
 }

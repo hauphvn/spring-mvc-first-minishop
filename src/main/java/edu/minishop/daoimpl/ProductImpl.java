@@ -9,4 +9,5 @@ public interface ProductImpl {
     List<Product> getAllLimitCriteria(int first, int max);
     Product getAllDetailProductById(int id);
     List<Product> getByIdCategory(int idCategory);
+    boolean deleteById(int id);
 }
