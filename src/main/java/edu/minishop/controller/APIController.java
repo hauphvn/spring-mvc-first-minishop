@@ -4,8 +4,10 @@
 package edu.minishop.controller;
 
 import edu.minishop.model.Cart;
+import edu.minishop.model.Color;
 import edu.minishop.model.Employee;
 import edu.minishop.model.Product;
+import edu.minishop.service.ColorProductService;
 import edu.minishop.service.EmployeeService;
 import edu.minishop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -203,6 +205,11 @@ public class APIController {
         return "null";
     }
 
-
+//    @GetMapping("getAllNameColor")
+//    public void getAllNameColor(ModelMap modelMap){
+//        List<Color> colors = colorProductService.getAll();
+//        modelMap.addAttribute("colors", colors);
+//
+//    }
 
 }

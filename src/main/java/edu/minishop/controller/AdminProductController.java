@@ -1,9 +1,13 @@
 package edu.minishop.controller;
 
 import edu.minishop.model.Category;
+import edu.minishop.model.Color;
 import edu.minishop.model.Product;
+import edu.minishop.model.Size;
 import edu.minishop.service.CategoryService;
+import edu.minishop.service.ColorProductService;
 import edu.minishop.service.ProductService;
+import edu.minishop.service.SizeProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +19,10 @@ import java.util.List;
 @RequestMapping("/adminAddingProduct")
 public class AdminProductController {
 
+    @Autowired
+    private ColorProductService colorProductService;
+    @Autowired
+    private SizeProductService sizeProductService;
     @Autowired
     private ProductService productService;
     @Autowired
@@ -35,6 +43,10 @@ public class AdminProductController {
     public String addProduct(ModelMap modelMap){
         List<Category> categories = categoryService.getAll();
         modelMap.addAttribute("categories", categories);
+        List<Color> colors = colorProductService.getAll();
+        modelMap.addAttribute("colors", colors);
+        List<Size> sizes = sizeProductService.getAll();
+        modelMap.addAttribute("sizes", sizes);
         return "admin-addProduct";
     }
 }
