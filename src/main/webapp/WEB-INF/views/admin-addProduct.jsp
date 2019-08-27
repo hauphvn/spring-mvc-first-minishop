@@ -233,86 +233,100 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <!--inner block start here-->
             <div class="inner-block">
                 <h3 style="text-align: center;">THÊM SẢN PHẨM</h3>
-              <div class="row">
-                  <div class="col-sm-12 col-md-12">
-                      <div class="form-group">
-                          <label for="nameProduct">Tên sản phẩm:</label>
-                          <input type="text" class="form-control nameProduct" id="nameProduct">
-                      </div>
-                      <div class="form-group">
-                          <label for="category">Danh mục:</label>
-                          <select class="form-control idCategory" id="category">
-                              <c:forEach var="category" items="${categories}">
-                                  <option value="${category.getCategory_id()}">${category.getName()}</option>
-                              </c:forEach>
-                          </select>
-                      </div>
-                      <div class="form-group">
-                          <%--                          TODO xu li input gia tien san pham--%>
-                          <label for="price">Giá tiền:</label>
-                          <input type="text" class="form-control priceProduct" id="price">
-                      </div>
+                <div class="row">
 
-                      <div class="form-group">
-                          <label for="imageProduct">Chọn hình ảnh</label>
-                          <input type="file" class="form-control-file" id="imageProduct">
-                      </div>
-                      <div class="form-group">
-                          <label for="comment">Mô tả:</label>
-                          <textarea class="form-control" rows="5" id="comment"></textarea>
-                      </div>
+                    <div class="col-sm-12 col-md-12">
+                        <form action="" id="form-input-info-product">
+                            <div class="form-group">
+                                <label for="nameProduct">Tên sản phẩm:</label>
+                                <input name="nameProduct" class="form-control nameProduct" id="nameProduct">
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Danh mục:</label>
+                                <select name="idCategory" class="form-control idCategory" id="category">
+                                    <c:forEach var="category" items="${categories}">
+                                        <option value="${category.getCategory_id()}">${category.getName()}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <%--                          TODO xu li input gia tien san pham--%>
+                                <label for="price">Giá tiền:</label>
+                                <input name="priceProduct" type="text" class="form-control priceProduct" id="price">
+                            </div>
 
-                      <fieldset class="detailProduct">
-                          <legend>Thông tin chi tiết:</legend>
-                          <label>Màu sắc:</label>
-                          <select class="form-control idColor">
-                              <c:forEach var="color" items="${colors}">
-                                  <option value="${color.getColor_id()}">${color.getName()}</option>
-                              </c:forEach>
-                          </select>
-                          <label >Kích thước:</label>
-                          <select class="form-control idSize" >
-                              <c:forEach var="size" items="${sizes}">
-                                  <option value="${size.getSize_id()}">${size.getName()}</option>
-                              </c:forEach>
-                          </select>
-                          <label >Số lượng</label>
-                          <input type="number" class="form-control priceProduct" >
+                            <div class="form-group">
+                                <label for="imageProduct">Chọn hình ảnh</label>
+                                <input name="nameImage" type="file" class="form-control-file" id="imageProduct">
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Mô tả:</label>
+                                <textarea name="commentProduct" class="form-control" rows="5" id="comment"></textarea>
+                            </div>
+                        </form>
+                        <form action="" id="form-input-detail-product">
+                            <div id="moreDetailProduct">
 
-                          <label >Ngày nhập:</label>
-                          <input type="date" class="form-control dayOfEntry" >
-                          <p></p>
-                          <button class="btn btn-success btn-clone-detail-product">Thêm chi tiết</button>
-                          <p></p>
-                      </fieldset>
+                                <fieldset class="detailProduct">
+                                    <legend>Thông tin chi tiết:</legend>
+                                    <label>Màu sắc:</label>
+                                    <select name="idColorProduct" class="form-control idColor">
+                                        <c:forEach var="color" items="${colors}">
+                                            <option value="${color.getColor_id()}">${color.getName()}</option>
+                                        </c:forEach>
+                                    </select>
+                                    <label>Kích thước:</label>
+                                    <select name="idSizeProduct" class="form-control idSize">
+                                        <c:forEach var="size" items="${sizes}">
+                                            <option value="${size.getSize_id()}">${size.getName()}</option>
+                                        </c:forEach>
+                                    </select>
+                                    <label>Số lượng</label>
+                                    <input name="amountProduct" min="1" value="1" type="number"
+                                           class="form-control priceProduct">
 
-                      <fieldset id="cloneDetailProduct">
-                          <legend>Thông tin chi tiết:</legend>
-                          <label>Màu sắc:</label>
-                          <select class="form-control idColor">
-                              <c:forEach var="color" items="${colors}">
-                                  <option value="${color.getColor_id()}">${color.getName()}</option>
-                              </c:forEach>
-                          </select>
-                          <label >Kích thước:</label>
-                          <select class="form-control idSize" >
-                              <c:forEach var="size" items="${sizes}">
-                                  <option value="${size.getSize_id()}">${size.getName()}</option>
-                              </c:forEach>
-                          </select>
-                          <label >Số lượng</label>
-                          <input type="number" class="form-control priceProduct" >
+<%--                                    <label>Ngày nhập:</label>--%>
+<%--                                    <input name="dayOfEntryProduct" type="date" class="form-control dayOfEntry">--%>
+                                    <p></p>
+                                    <button class="btn btn-success btn-clone-detail-product">Thêm chi tiết</button>
+                                    <p></p>
+                                </fieldset>
 
-                          <label >Ngày nhập:</label>
-                          <input type="date" class="form-control dayOfEntry" >
-                          <p></p>
-                          <button class="btn btn-success btn-clone-detail-product">Thêm chi tiết</button>
-                          <p></p>
-                      </fieldset>
+                            </div>
+                        </form>
 
-                      <button style="text-align: center;" class="btn btn-block btn-success adding-product" type="submit">THÊM SẢN PHẨM  </button>
-                  </div>
-              </div>
+
+                        <fieldset id="cloneDetailProduct" class="detailProduct">
+                            <legend>Thông tin chi tiết:</legend>
+                            <label>Màu sắc:</label>
+                            <select name="idColorProduct" class="form-control idColor">
+                                <c:forEach var="color" items="${colors}">
+                                    <option value="${color.getColor_id()}">${color.getName()}</option>
+                                </c:forEach>
+                            </select>
+                            <label>Kích thước:</label>
+                            <select name="idSizeProduct" class="form-control idSize">
+                                <c:forEach var="size" items="${sizes}">
+                                    <option value="${size.getSize_id()}">${size.getName()}</option>
+                                </c:forEach>
+                            </select>
+                            <label>Số lượng</label>
+                            <input name="amountProduct" min="1" value="1" type="number"
+                                   class="form-control priceProduct">
+
+<%--                            <label>Ngày nhập:</label>--%>
+<%--                            <input name="dayOfEntryProduct" type="date" class="form-control dayOfEntry">--%>
+                            <p></p>
+                            <button class="btn btn-success btn-clone-detail-product">Thêm chi tiết</button>
+                            <p></p>
+                        </fieldset>
+
+                        <button style="text-align: center;" class="btn btn-block btn-success adding-product"
+                        >THÊM SẢN PHẨM
+                        </button>
+                    </div>
+
+                </div>
             </div>
             <!--inner block end here-->
 

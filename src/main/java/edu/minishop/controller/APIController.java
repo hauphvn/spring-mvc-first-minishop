@@ -205,11 +205,10 @@ public class APIController {
         return "null";
     }
 
-//    @GetMapping("getAllNameColor")
-//    public void getAllNameColor(ModelMap modelMap){
-//        List<Color> colors = colorProductService.getAll();
-//        modelMap.addAttribute("colors", colors);
-//
-//    }
+    @PostMapping("addingProduct")
+    @ResponseBody
+     public void addingProduct(String content){
+        System.out.println(content);
+    }
 
 }

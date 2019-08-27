@@ -72,12 +72,6 @@ $(document).ready(function () {
         $("#choosePage").html(outHtml);
     });
 
-    $("fieldset").on("click",".btn-clone-detail-product",function () {
-        $(this).remove();
-        var contentClone = $("#cloneDetailProduct").clone().removeAttr("id");
-        $(".detailProduct").append(contentClone);
-    });
-
     $(".page-prev").click(function () {
         var curPage = $(this).closest("ul").find(".active").attr("data-currentPage");
         if (curPage > 1) {
@@ -140,16 +134,57 @@ $(document).ready(function () {
         });
     });
 
-    $(".adding-product").click(function () {
-        var nameProduct = $(".nameProduct").val();
-        var idCategory = $(".idCategory").children("option:selected").val();
-        var idColor = $(".idColor").children("option:selected").val();
-        var idSize = $(".idSize").children("option:selected").val();
-        var price = $(".priceProduct").val();
-        var dayOfEntry = $(".dayOfEntry").val();
-        var image = $("#imageProduct").val().replace(/C:\\fakepath\\/i, '');
-        var comment = $("#comment").val();
-        alert(dayOfEntry);
+    $("body").on("click",".btn-clone-detail-product",function () {
+        $(this).remove();
+        var contentClone = $("#cloneDetailProduct").clone().removeAttr("id");
+        $("#moreDetailProduct").append(contentClone);
+    });
+
+    $(".adding-product").click(function (event) {
+        // Cach thong thuong
+        // var nameProduct = $(".nameProduct").val();
+        // var idCategory = $(".idCategory").children("option:selected").val();
+        // $('#moreDetailProduct').on('change','.idColor',function (event) {
+        //     alert("fsdfs");
+        // });
+
+        // var idSize = $(".idSize").children("option:selected").val();
+        // var price = $(".priceProduct").val();
+        // var dayOfEntry = $(".dayOfEntry").val();
+        // var image = $("#imageProduct").val().replace(/C:\\fakepath\\/i, '');
+        // var comment = $("#comment").val();
+        // alert(idColor);
+
+        //Cach su dung serializeArray of form
+
+        event.preventDefault();//Ngan chan reload when click bottom of form
+        var dataBasicFormInput = $("#form-input-info-product").serializeArray();
+        var dataDetailInput = $("#form-input-detail-product").serializeArray();
+        var json = {};
+        var arrayDetailProduct = [];
+        var objectDetailProduct = {};
+        $("#moreDetailProduct > .detailProduct").each(function () {
+            objectDetailProduct = {};
+            color = $(this).find('select[name="idColorProduct"]').val();
+            size = $(this).find('select[name="idSizeProduct"]').val();
+            amount = $(this).find('input[name="amountProduct"]').val();
+            objectDetailProduct["color"] = color;
+            objectDetailProduct["size"] = size;
+            objectDetailProduct["amount"] = amount;
+            arrayDetailProduct.push(objectDetailProduct);
+
+        });
+        $.each(dataBasicFormInput, function(i, field){
+            json[field.name + i] = field.value;
+        });
+        json["listDetailProducts"] = arrayDetailProduct;
+        $.ajax({
+            url:"/Minishop/api/addingProduct",
+            type: "post",
+            data:{
+                content: JSON.stringify(json)
+            }
+        });
     });
     $(".amountProduct").change(function () {
         var amountOrigin = $(this).val();
