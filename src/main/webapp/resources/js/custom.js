@@ -119,8 +119,10 @@ $(document).ready(function () {
     });
 
     var arrayFile = [];
+    var nameImageProduct = "";
     $("#imageProduct").change(function (event) {
         arrayFile = event.target.files;
+        nameImageProduct = arrayFile[0].name;
         forms = new FormData();
         forms.append("imageFile", arrayFile[0]);
         $.ajax({
@@ -133,6 +135,8 @@ $(document).ready(function () {
 
         });
     });
+
+
 
     $("body").on("click",".btn-clone-detail-product",function () {
         $(this).remove();
@@ -165,19 +169,23 @@ $(document).ready(function () {
         var objectDetailProduct = {};
         $("#moreDetailProduct > .detailProduct").each(function () {
             objectDetailProduct = {};
-            color = $(this).find('select[name="idColorProduct"]').val();
-            size = $(this).find('select[name="idSizeProduct"]').val();
-            amount = $(this).find('input[name="amountProduct"]').val();
+            color = $(this).find('select[name="color"]').val();
+            size = $(this).find('select[name="size"]').val();
+            amount = $(this).find('input[name="amount"]').val();
+            dayOfEntry = $(this).find('input[name="dayOfEntry"]').val();
             objectDetailProduct["color"] = color;
             objectDetailProduct["size"] = size;
             objectDetailProduct["amount"] = amount;
+            objectDetailProduct["dayOfEntry"] = dayOfEntry;
             arrayDetailProduct.push(objectDetailProduct);
 
         });
         $.each(dataBasicFormInput, function(i, field){
-            json[field.name + i] = field.value;
+            json[field.name] = field.value;
         });
-        json["listDetailProducts"] = arrayDetailProduct;
+        json["detailProducts"] = arrayDetailProduct;
+        json["image"] = nameImageProduct;
+        console.log(json);
         $.ajax({
             url:"/Minishop/api/addingProduct",
             type: "post",

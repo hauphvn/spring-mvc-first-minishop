@@ -38,4 +38,9 @@ public class ProductService implements ProductImpl {
     public boolean deleteById(int id) {
         return productDao.deleteById(id);
     }
+
+    @Override
+    public Product addSingle(Product product) {
+        return productDao.addSingle(product);
+    }
 }

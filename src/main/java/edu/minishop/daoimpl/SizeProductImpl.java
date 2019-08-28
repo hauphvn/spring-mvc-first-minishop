@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface SizeProductImpl {
     List<Size> getAll();
+    Size getById(int id);
 }

@@ -34,4 +34,13 @@ public class SizeProductDao implements SizeProductImpl {
 
         return sizes;
     }
+
+    @Override
+    @Transactional
+    public Size getById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        String sql = "from SIZE WHERE size_id = "+id;
+        Size size = (Size) session.createQuery(sql).getSingleResult();
+        return size;
+    }
 }

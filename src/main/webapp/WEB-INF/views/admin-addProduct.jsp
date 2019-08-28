@@ -239,11 +239,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <form action="" id="form-input-info-product">
                             <div class="form-group">
                                 <label for="nameProduct">Tên sản phẩm:</label>
-                                <input name="nameProduct" class="form-control nameProduct" id="nameProduct">
+                                <input name="name" class="form-control nameProduct" id="nameProduct">
                             </div>
                             <div class="form-group">
                                 <label for="category">Danh mục:</label>
-                                <select name="idCategory" class="form-control idCategory" id="category">
+                                <select name="category" class="form-control idCategory" id="category">
                                     <c:forEach var="category" items="${categories}">
                                         <option value="${category.getCategory_id()}">${category.getName()}</option>
                                     </c:forEach>
@@ -252,16 +252,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="form-group">
                                 <%--                          TODO xu li input gia tien san pham--%>
                                 <label for="price">Giá tiền:</label>
-                                <input name="priceProduct" type="text" class="form-control priceProduct" id="price">
+                                <input name="price" type="text" class="form-control priceProduct" id="price">
                             </div>
 
                             <div class="form-group">
                                 <label for="imageProduct">Chọn hình ảnh</label>
-                                <input name="nameImage" type="file" class="form-control-file" id="imageProduct">
+                                <input name="image" type="file" class="form-control-file" id="imageProduct">
                             </div>
                             <div class="form-group">
                                 <label for="comment">Mô tả:</label>
-                                <textarea name="commentProduct" class="form-control" rows="5" id="comment"></textarea>
+                                <textarea name="description" class="form-control" rows="5" id="comment"></textarea>
                             </div>
                         </form>
                         <form action="" id="form-input-detail-product">
@@ -270,23 +270,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <fieldset class="detailProduct">
                                     <legend>Thông tin chi tiết:</legend>
                                     <label>Màu sắc:</label>
-                                    <select name="idColorProduct" class="form-control idColor">
+                                    <select name="color" class="form-control idColor">
                                         <c:forEach var="color" items="${colors}">
                                             <option value="${color.getColor_id()}">${color.getName()}</option>
                                         </c:forEach>
                                     </select>
                                     <label>Kích thước:</label>
-                                    <select name="idSizeProduct" class="form-control idSize">
+                                    <select name="size" class="form-control idSize">
                                         <c:forEach var="size" items="${sizes}">
                                             <option value="${size.getSize_id()}">${size.getName()}</option>
                                         </c:forEach>
                                     </select>
                                     <label>Số lượng</label>
-                                    <input name="amountProduct" min="1" value="1" type="number"
+                                    <input name="amount" min="1" value="1" type="number"
                                            class="form-control priceProduct">
 
-<%--                                    <label>Ngày nhập:</label>--%>
-<%--                                    <input name="dayOfEntryProduct" type="date" class="form-control dayOfEntry">--%>
+                                    <label>Ngày nhập:</label>
+                                    <input name="dayOfEntry" type="date" class="form-control dayOfEntry">
                                     <p></p>
                                     <button class="btn btn-success btn-clone-detail-product">Thêm chi tiết</button>
                                     <p></p>
@@ -299,23 +299,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <fieldset id="cloneDetailProduct" class="detailProduct">
                             <legend>Thông tin chi tiết:</legend>
                             <label>Màu sắc:</label>
-                            <select name="idColorProduct" class="form-control idColor">
+                            <select name="color" class="form-control idColor">
                                 <c:forEach var="color" items="${colors}">
                                     <option value="${color.getColor_id()}">${color.getName()}</option>
                                 </c:forEach>
                             </select>
                             <label>Kích thước:</label>
-                            <select name="idSizeProduct" class="form-control idSize">
+                            <select name="size" class="form-control idSize">
                                 <c:forEach var="size" items="${sizes}">
                                     <option value="${size.getSize_id()}">${size.getName()}</option>
                                 </c:forEach>
                             </select>
                             <label>Số lượng</label>
-                            <input name="amountProduct" min="1" value="1" type="number"
+                            <input name="amount" min="1" value="1" type="number"
                                    class="form-control priceProduct">
 
-<%--                            <label>Ngày nhập:</label>--%>
-<%--                            <input name="dayOfEntryProduct" type="date" class="form-control dayOfEntry">--%>
+                            <label>Ngày nhập:</label>
+                            <input name="dayOfEntry" type="date" class="form-control dayOfEntry">
                             <p></p>
                             <button class="btn btn-success btn-clone-detail-product">Thêm chi tiết</button>
                             <p></p>

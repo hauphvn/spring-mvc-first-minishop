@@ -13,12 +13,12 @@ public class Product {
     private String description;
     private String image;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "idCategory")
     private Category category;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "idProduct")
+    @JoinColumn(name = "product_id")
     private Set<DetailProduct> detailProducts;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -92,5 +92,10 @@ public class Product {
     }
 
     public Product() {
+    }
+
+    @Override
+    public String toString() {
+        return product_id + ": "+name+": "+category.getName()+" detaiSize: "+detailProducts.size();
     }
 }

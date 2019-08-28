@@ -18,4 +18,9 @@ public class SizeProductService implements SizeProductImpl {
     public List<Size> getAll() {
         return sizeProductDao.getAll();
     }
+
+    @Override
+    public Size getById(int id) {
+        return sizeProductDao.getById(id);
+    }
 }

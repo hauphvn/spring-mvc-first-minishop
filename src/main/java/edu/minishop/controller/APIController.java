@@ -3,13 +3,10 @@
  * */
 package edu.minishop.controller;
 
-import edu.minishop.model.Cart;
-import edu.minishop.model.Color;
-import edu.minishop.model.Employee;
-import edu.minishop.model.Product;
-import edu.minishop.service.ColorProductService;
-import edu.minishop.service.EmployeeService;
-import edu.minishop.service.ProductService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.minishop.model.*;
+import edu.minishop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,9 +18,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("api/")
@@ -37,6 +32,12 @@ public class APIController {
     private ProductService productService;
     @Autowired
     private ServletContext servletContext;
+    @Autowired
+    private CategoryService categoryService;
+    @Autowired
+    private SizeProductService sizeProductService;
+    @Autowired
+    private ColorProductService colorProductService;
 
     @GetMapping("checkLogin")
     @ResponseBody
@@ -134,9 +135,9 @@ public class APIController {
 
     @GetMapping("removeProductFromCart")
     @ResponseBody
-    public String removeProductFromCart(HttpSession httpSession, int idProduct, int idColor, int idSize){
+    public String removeProductFromCart(HttpSession httpSession, int idProduct, int idColor, int idSize) {
         int index = isExitstProduct(httpSession, idProduct, idSize, idColor);
-        if (index != -1){
+        if (index != -1) {
             List<Cart> carts = (List<Cart>) httpSession.getAttribute("sessionCart");
             carts.remove(index);
             System.out.println("xoa thanh cong");
@@ -163,17 +164,17 @@ public class APIController {
 
     @GetMapping(path = "pagination", produces = "text/plain; charset=utf-8")
     @ResponseBody
-    public String pagination(ModelMap modelMap, @RequestParam int curPage){
+    public String pagination(ModelMap modelMap, @RequestParam int curPage) {
         int fromPos = ROW_NUMBER_PAGINATION * (curPage - 1);
-        List<Product> products = productService.getAllLimitCriteria(fromPos,ROW_NUMBER_PAGINATION);
+        List<Product> products = productService.getAllLimitCriteria(fromPos, ROW_NUMBER_PAGINATION);
         String html = "";
         for (Product product :
                 products) {
             html = html + "<tr>" +
-                    "<td>"+product.getName()+"</td> " +
-                    "<td>"+product.getCategory().getName()+"</td> " +
-                    "<td>"+product.getPrice()+"</td> " +
-                    "<td><img class='removeProduct' data-removeProduct='"+product.getProduct_id()+"' style='cursor: pointer' src='/Minishop/resources/imgs/remove.png ' alt='img-remove-product'></td> " +
+                    "<td>" + product.getName() + "</td> " +
+                    "<td>" + product.getCategory().getName() + "</td> " +
+                    "<td>" + product.getPrice() + "</td> " +
+                    "<td><img class='removeProduct' data-removeProduct='" + product.getProduct_id() + "' style='cursor: pointer' src='/Minishop/resources/imgs/remove.png ' alt='img-remove-product'></td> " +
                     "</tr>";
         }
         return html;
@@ -181,8 +182,8 @@ public class APIController {
 
     @GetMapping("deleteProductById")
     @ResponseBody
-    public String deleteProductById(@RequestParam int id){
-        if(productService.deleteById(id) == true){
+    public String deleteProductById(@RequestParam int id) {
+        if (productService.deleteById(id) == true) {
             return "true";
         }
         return "false";
@@ -190,11 +191,10 @@ public class APIController {
 
     @PostMapping("uploadFile")
     @ResponseBody
-    public String uploadFile(MultipartHttpServletRequest multipartHttpServletRequest){
+    public String uploadFile(MultipartHttpServletRequest multipartHttpServletRequest) {
         String pathToSave = servletContext.getRealPath("/resources/imgs/products/");
         Iterator<String> stringIteratorName = multipartHttpServletRequest.getFileNames();
         MultipartFile multipartFile = multipartHttpServletRequest.getFile(stringIteratorName.next());
-        System.out.println(pathToSave);
 
         File fileToSave = new File(pathToSave + multipartFile.getOriginalFilename());
         try {
@@ -207,8 +207,45 @@ public class APIController {
 
     @PostMapping("addingProduct")
     @ResponseBody
-     public void addingProduct(String content){
-        System.out.println(content);
+    public void addingProduct(String content) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode;
+        Product product = new Product();
+        Set<DetailProduct> detailProducts = new HashSet<>();
+        //Mapping manual
+        try {
+            jsonNode = objectMapper.readTree(content);
+
+            product.setName(jsonNode.get("name").asText());
+            product.setDescription(jsonNode.get("description").asText());
+            product.setPrice(jsonNode.get("price").asText());
+            product.setImage(jsonNode.get("image").asText());
+            product.setCategory(categoryService.getById(jsonNode.get("category").asInt()));
+
+            JsonNode arrayDetailProduct = jsonNode.get("detailProducts");
+            for (JsonNode objectDetail :
+                    arrayDetailProduct) {
+                DetailProduct detailProduct = new DetailProduct();
+                detailProduct.setColor(colorProductService.getById(objectDetail.get("color").asInt()));
+                detailProduct.setSize(sizeProductService.getById(objectDetail.get("size").asInt()));
+                detailProduct.setAmount(objectDetail.get("amount").asInt());
+                detailProduct.setDayOfEntry(objectDetail.get("dayOfEntry").asText());
+                detailProduct.setProduct(product);
+
+                detailProducts.add(detailProduct);
+                detailProduct = null;
+            }
+
+            product.setDetailProducts(detailProducts);
+
+
+        } catch (IOException e) {
+            System.out.println("error" + e.getMessage());
+            e.printStackTrace();
+        }
+
+//        System.out.println("-------"+detailProducts.size());
+        productService.addSingle(product);
     }
 
 }

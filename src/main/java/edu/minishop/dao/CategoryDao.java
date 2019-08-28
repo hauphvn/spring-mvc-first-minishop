@@ -31,4 +31,13 @@ public class CategoryDao implements CategoryImpl {
         }
         return categories;
     }
+
+    @Override
+    @Transactional
+    public Category getById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        String sql = "from CATEGORY WHERE category_id = "+id;
+        Category category = (Category) session.createQuery(sql).getSingleResult();
+        return category;
+    }
 }

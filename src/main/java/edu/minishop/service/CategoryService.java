@@ -16,4 +16,9 @@ public class CategoryService implements CategoryImpl {
     public List<Category> getAll() {
         return categoryDao.getAll();
     }
+
+    @Override
+    public Category getById(int id) {
+        return categoryDao.getById(id);
+    }
 }

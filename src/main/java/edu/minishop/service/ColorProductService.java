@@ -18,4 +18,9 @@ public class ColorProductService implements ColorProductImpl {
     public List<Color> getAll() {
         return colorProductDao.getAll();
     }
+
+    @Override
+    public Color getById(int id) {
+        return colorProductDao.getById(id);
+    }
 }

@@ -34,4 +34,19 @@ public class ColorProductDao implements ColorProductImpl {
 
         return colors;
     }
+
+    @Override
+    @Transactional
+    public Color getById(int id) {
+        Color color = new Color();
+        Session session = sessionFactory.getCurrentSession();
+        String sql = "from COLOR where color_id = "+id;
+        try {
+            color = (Color) session.createQuery(sql).getSingleResult();
+
+        }catch (Exception e){
+            System.out.println("Loi khong the truy van color tu database: "+ e.toString());
+        }
+        return color;
+    }
 }

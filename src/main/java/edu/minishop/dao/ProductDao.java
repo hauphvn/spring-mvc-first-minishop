@@ -115,4 +115,17 @@ public class ProductDao implements ProductImpl {
         return false;
 
     }
+
+    @Override
+    @Transactional
+    public Product addSingle(Product product) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(product);
+//        System.out.println(product.getName());
+//        System.out.println(product.getPrice());
+//        System.out.println(product.getDescription());
+//        System.out.println(product.getImage());
+//        System.out.println(product.getDetailProducts().size());
+        return product;
+    }
 }

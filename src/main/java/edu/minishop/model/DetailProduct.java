@@ -11,15 +11,15 @@ public class DetailProduct {
     private String dayOfEntry;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idProduct")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idSize")
+    @JoinColumn(name = "size_id")
     private Size size;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idColor")
+    @JoinColumn(name = "color_id")
     private Color color;
 
     public int getDetail_product_id() {

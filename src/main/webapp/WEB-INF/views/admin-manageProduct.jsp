@@ -279,7 +279,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <td>${product.getName()}</td>
                                             <td>${product.getCategory().getName()}</td>
                                             <td>${product.getPrice()}</td>
-                                            <td><img class="removeProduct" data-removeProduct="${product.getProduct_id()}" style='cursor: pointer' src='<c:url value='/resources/imgs/remove.png'/> ' alt='img-remove-product'></td>
+                                            <td><img class="iconRemoveProduct" data-removeProduct="${product.getProduct_id()}" style='cursor: pointer' src='<c:url value='/resources/imgs/remove.png'/> ' alt='img-remove-product'></td>
                                         </tr>
                                     </c:forEach>
                             </tbody>
