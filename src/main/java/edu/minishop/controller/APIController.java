@@ -207,7 +207,7 @@ public class APIController {
 
     @PostMapping("addingProduct")
     @ResponseBody
-    public void addingProduct(String content) {
+    public String addingProduct(String content) {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode;
         Product product = new Product();
@@ -242,10 +242,14 @@ public class APIController {
         } catch (IOException e) {
             System.out.println("error" + e.getMessage());
             e.printStackTrace();
+            return "false";
         }
 
-//        System.out.println("-------"+detailProducts.size());
-        productService.addSingle(product);
+        Product product1 = productService.addSingle(product);
+        if (product != null)    {
+            return "true";
+        }
+        return "false";
     }
 
 }

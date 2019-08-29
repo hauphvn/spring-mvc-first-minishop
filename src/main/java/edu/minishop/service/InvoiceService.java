@@ -16,4 +16,9 @@ public class InvoiceService implements InvoiceImpl {
     public int addSingle(Invoice invoice) {
         return invoiceDao.addSingle(invoice);
     }
+
+    @Override
+    public void deleteById(int id) {
+        invoiceDao.deleteById(id);
+    }
 }

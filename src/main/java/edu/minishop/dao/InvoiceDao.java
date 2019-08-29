@@ -25,4 +25,19 @@ public class InvoiceDao implements InvoiceImpl {
         int id = (int) session.save(invoice);
         return ((id > 0) ? id  : 0);
     }
+
+    @Override
+    @Transactional
+    public void deleteById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            Invoice invoice = session.get(Invoice.class, id);
+            String sql = "delete from INVOICE i where i.invoice_id = "+id;
+            session.createQuery(sql).executeUpdate();
+
+        }catch (Exception e){
+            System.out.println("Error deleteById of InvoiceDao:  " + e.toString());
+            System.out.println("Error deleteById of InvoiceDao:  " + e.getMessage());
+        }
+    }
 }

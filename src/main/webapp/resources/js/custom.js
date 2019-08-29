@@ -112,8 +112,25 @@ $(document).ready(function () {
                 id: idRemove
             },
             success:function (value) {
-                if(value == "true"){}
-                This.closest("tr").remove();
+                if(value == "true"){
+                    This.closest("tr").remove();
+                    myAlert = $(".success-alert");
+                    myAlert.removeClass("myHidden");
+                    window.setTimeout(function () {
+                        myAlert.fadeTo(400,0).slideUp(400,function () {
+                            myAlert.addClass("myHidden");
+                        });
+                    },1000);
+                }else{
+                    myAlert = $(".fail-alert");
+                    myAlert.removeClass("myHidden");
+                    window.setTimeout(function () {
+                        myAlert.fadeTo(400,0).slideUp(400,function () {
+                            myAlert.addClass("myHidden");
+                        });
+                    },1000);
+                }
+
             }
         });
     });
@@ -135,7 +152,6 @@ $(document).ready(function () {
 
         });
     });
-
 
 
     $("body").on("click",".btn-clone-detail-product",function () {
@@ -185,12 +201,29 @@ $(document).ready(function () {
         });
         json["detailProducts"] = arrayDetailProduct;
         json["image"] = nameImageProduct;
-        console.log(json);
         $.ajax({
             url:"/Minishop/api/addingProduct",
             type: "post",
             data:{
                 content: JSON.stringify(json)
+            },
+            success:function (value) {
+                if (value == "true"){
+                    $(".success-alert").removeClass("myHidden");
+
+                    window.setTimeout(function() {
+                        $(".success-alert").fadeTo(400, 0).slideUp(400, function(){
+                            $(".success-alert").addClass("myHidden");
+                        });
+                    }, 1000);
+                } else{
+                    $(".fail-alert").removeClass("myHidden");
+                    window.setTimeout(function() {
+                        $(".fail-alert").fadeTo(400, 0).slideUp(400, function(){
+                            $(".fail-alert").addClass("myHidden");;
+                        });
+                    },1000);
+                }
             }
         });
     });

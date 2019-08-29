@@ -7,23 +7,23 @@ import java.util.Objects;
 
 @Embeddable
 public class DetailInvoiceId implements Serializable {
-    private int idInvoice;
-    private int idDetailProduct;
+    private int invoice_id;
+    private int detail_product_id;
 
     public int getIdInvoice() {
-        return idInvoice;
+        return invoice_id;
     }
 
     public void setIdInvoice(int idInvoice) {
-        this.idInvoice = idInvoice;
+        this.invoice_id = idInvoice;
     }
 
     public int getIdDetailProduct() {
-        return idDetailProduct;
+        return detail_product_id;
     }
 
     public void setIdDetailProduct(int idDetailProduct) {
-        this.idDetailProduct = idDetailProduct;
+        this.detail_product_id = idDetailProduct;
     }
 
     public DetailInvoiceId() {

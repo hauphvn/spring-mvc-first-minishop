@@ -1,8 +1,8 @@
 package edu.minishop.dao;
 
 import edu.minishop.daoimpl.ProductImpl;
+import edu.minishop.model.DetailProduct;
 import edu.minishop.model.Product;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -18,6 +18,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -25,6 +26,11 @@ public class ProductDao implements ProductImpl {
 
     @Autowired
     private SessionFactory sessionFactory;
+    @Autowired
+    private DetailInvoiceDao detailInvoiceDao;
+    @Autowired
+    private InvoiceDao invoiceDao;
+
     @Override
     @Transactional
     public List<Product> getAllLimit(int first, int max) {
@@ -41,8 +47,8 @@ public class ProductDao implements ProductImpl {
 //            Log4jFactory.getLogger().info("Get product limit from database");
 //            Log4jFactory.getLogger().warning("Get product limit from database");
 //            Log4jFactory.getLogger().severe("Get product limit from database");
-        }catch (Exception e){
-            System.out.println("Loi truy cap du lieu PRODUCT: "+ e.toString());
+        } catch (Exception e) {
+            System.out.println("Loi truy cap du lieu PRODUCT: " + e.toString());
         }
         return products;
     }
@@ -55,21 +61,21 @@ public class ProductDao implements ProductImpl {
 
         try {
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-            CriteriaQuery<Product> criteriaQuery= criteriaBuilder.createQuery(Product.class);
+            CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
             Root<Product> productRoot = criteriaQuery.from(Product.class);
             criteriaQuery.select(productRoot);
 //            criteriaQuery.select(productRoot).where(criteriaBuilder.equal(productRoot.get("product_id"),1L));
 //            Query<Product> productQuery = session.createQuery(criteriaQuery);
 
             TypedQuery<Product> productTypedQuery = session.createQuery(criteriaQuery);
-            if (max > 0){
+            if (max > 0) {
                 productTypedQuery.setMaxResults(max);
             }
             productTypedQuery.setFirstResult(first);
             products = productTypedQuery.getResultList();
 
-        }catch (Exception e){
-            System.out.println("Loi truy cap du lieu PRODUCT: "+ e.toString());
+        } catch (Exception e) {
+            System.out.println("Loi truy cap du lieu PRODUCT: " + e.toString());
         }
         return products;
     }
@@ -82,7 +88,7 @@ public class ProductDao implements ProductImpl {
         String sql = "from PRODUCT where product_id = " + id;
         try {
             product = (Product) session.createQuery(sql).getSingleResult();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error query database from getAllDetailProductById: " + e.toString());
         }
         return product;
@@ -93,12 +99,12 @@ public class ProductDao implements ProductImpl {
     public List<Product> getByIdCategory(int idCategory) {
 
         Session session = sessionFactory.getCurrentSession();
-        String sql = "From PRODUCT WHERE category.category_id = "+ idCategory +"";
+        String sql = "From PRODUCT WHERE category.category_id = " + idCategory + "";
         try {
             List<Product> products = (List<Product>) session.createQuery(sql).getResultList();
             return products;
-        }catch (Exception e){
-            System.out.println("Error get product by idCategory: "+ e.toString());
+        } catch (Exception e) {
+            System.out.println("Error get product by idCategory: " + e.toString());
         }
         return null;
     }
@@ -108,9 +114,23 @@ public class ProductDao implements ProductImpl {
     public boolean deleteById(int id) {
         Session session = sessionFactory.getCurrentSession();
         Product product = session.get(Product.class, id);
-        if (product != null){
-            System.out.println(product.getName());
-            return true;
+        if (product != null) {
+            try {
+                Set<DetailProduct> detailProducts = product.getDetailProducts();
+                Set<Integer> listIdInvoices = detailInvoiceDao.getListIdInvoiceByIdDetailProduct(detailProducts);
+
+                detailInvoiceDao.deleteByListDetailIdProduct(detailProducts);
+
+               for (int idInvoice :
+                       listIdInvoices) {
+                   invoiceDao.deleteById(idInvoice);
+               }
+
+               session.delete(product);
+                return true;
+            } catch (Exception e) {
+                System.out.println("Error delete product by id: " + e.toString());
+            }
         }
         return false;
 
@@ -121,11 +141,6 @@ public class ProductDao implements ProductImpl {
     public Product addSingle(Product product) {
         Session session = sessionFactory.getCurrentSession();
         session.save(product);
-//        System.out.println(product.getName());
-//        System.out.println(product.getPrice());
-//        System.out.println(product.getDescription());
-//        System.out.println(product.getImage());
-//        System.out.println(product.getDetailProducts().size());
         return product;
     }
 }

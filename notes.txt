@@ -111,6 +111,9 @@ totalPrice: varchar(100)
 Primary key: idInvoice,idDetailProduct
 
 ------------------Chu y trong tao class trong hibernate---------
+--Tim hieu ki hon ve relationship
+https://docs.jboss.org/hibernate/annotations/3.5/reference/en/html/entity.html#entity-mapping-association
+
 --Trong qua trinh tao class trong model, ta gap truong hop class co
 2 @id lam khoa chinh ta su dung nhieu cach, o day ta su dung
 @Embeddable

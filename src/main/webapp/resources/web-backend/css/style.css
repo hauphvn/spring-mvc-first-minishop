@@ -8,6 +8,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 #cloneDetailProduct{
     display: none;
 }
+.myHidden{
+    display: none;
+}
+.success-alert{
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+    color: #270;
+    background-color: #DFF2BF;
+    font-weight: bold;
+    text-align: center;
+    opacity:1 !important;
+}
+.fail-alert{
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+    color: #270;
+    background-color: red;
+    font-weight: bold;
+    text-align: center;
+    opacity:1 !important;
+}
 /*!Admin-Adding product*/
 html, body{
 	font-family: 'Roboto', sans-serif;

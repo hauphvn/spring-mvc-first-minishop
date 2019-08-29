@@ -14,11 +14,11 @@ public class DetailProduct {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "size_id")
     private Size size;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "color_id")
     private Color color;
 

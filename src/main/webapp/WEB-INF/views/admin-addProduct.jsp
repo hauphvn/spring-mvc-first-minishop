@@ -321,6 +321,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <p></p>
                         </fieldset>
 
+                        <div class="success-alert myHidden">
+                            <i class="fa fa-check"></i>
+                            Thêm sản phẩm THÀNH CÔNG!
+                        </div>
+                        <div class="fail-alert myHidden">
+                            <i class="fa fa-check"></i>
+                            Thêm sản phẩm THẤT BẠI!
+                        </div>
+
                         <button style="text-align: center;" class="btn btn-block btn-success adding-product"
                         >THÊM SẢN PHẨM
                         </button>
