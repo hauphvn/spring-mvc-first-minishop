@@ -43,4 +43,15 @@ public class ProductService implements ProductImpl {
     public Product addSingle(Product product) {
         return productDao.addSingle(product);
     }
+
+    @Override
+    public Product getById(int id) {
+        return productDao.getById(id);
+    }
+
+    @Override
+    public void update(Product product) {
+        productDao.update(product);
+    }
 }
+

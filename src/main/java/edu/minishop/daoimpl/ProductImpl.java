@@ -11,4 +11,6 @@ public interface ProductImpl {
     List<Product> getByIdCategory(int idCategory);
     boolean deleteById(int id);
     Product addSingle(Product product);
+    Product getById(int id);
+    void update(Product product);
 }

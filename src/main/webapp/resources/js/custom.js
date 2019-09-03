@@ -160,6 +160,61 @@ $(document).ready(function () {
         $("#moreDetailProduct").append(contentClone);
     });
 
+    $(".updating-product").click(function (event) {
+        event.preventDefault();//Ngan chan reload khi click button
+
+        var idProduct = $("#idProduct").attr("data-idProduct");
+        var dataBasicFormInput = $("#form-input-info-product").serializeArray();
+        var dataDetailInput = $("#form-input-detail-product").serializeArray();
+        var json = {};
+        var arrayDetailProduct = [];
+        var objectDetailProduct = {};
+        $("#moreDetailProduct > .detailProduct").each(function () {
+            objectDetailProduct = {};
+            color = $(this).find('select[name="color"]').val();
+            size = $(this).find('select[name="size"]').val();
+            amount = $(this).find('input[name="amount"]').val();
+            dayOfEntry = $(this).find('input[name="dayOfEntry"]').val();
+            objectDetailProduct["color"] = color;
+            objectDetailProduct["size"] = size;
+            objectDetailProduct["amount"] = amount;
+            objectDetailProduct["dayOfEntry"] = dayOfEntry;
+            arrayDetailProduct.push(objectDetailProduct);
+
+        });
+        $.each(dataBasicFormInput, function(i, field){
+            json[field.name] = field.value;
+        });
+        json["product_id"] = idProduct;
+        json["detailProducts"] = arrayDetailProduct;
+        json["image"] = nameImageProduct;
+        $.ajax({
+            url:"/Minishop/api/updatingProduct",
+            type: "post",
+            data:{
+                jsonProduct: JSON.stringify(json)
+            },
+            success:function (value) {
+                if (value == "true"){
+                    $(".success-alert").removeClass("myHidden");
+
+                    window.setTimeout(function() {
+                        $(".success-alert").fadeTo(400, 0).slideUp(400, function(){
+                            $(".success-alert").addClass("myHidden");
+                        });
+                    }, 1000);
+                } else{
+                    $(".fail-alert").removeClass("myHidden");
+                    window.setTimeout(function() {
+                        $(".fail-alert").fadeTo(400, 0).slideUp(400, function(){
+                            $(".fail-alert").addClass("myHidden");;
+                        });
+                    },1000);
+                }
+            }
+        });
+    });
+
     $(".adding-product").click(function (event) {
         // Cach thong thuong
         // var nameProduct = $(".nameProduct").val();

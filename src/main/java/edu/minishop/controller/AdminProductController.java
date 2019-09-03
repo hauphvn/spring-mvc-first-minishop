@@ -1,19 +1,18 @@
 package edu.minishop.controller;
 
-import edu.minishop.model.Category;
-import edu.minishop.model.Color;
-import edu.minishop.model.Product;
-import edu.minishop.model.Size;
+import edu.minishop.model.*;
 import edu.minishop.service.CategoryService;
 import edu.minishop.service.ColorProductService;
 import edu.minishop.service.ProductService;
 import edu.minishop.service.SizeProductService;
+import org.hibernate.annotations.NaturalId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/adminAddingProduct")
@@ -48,5 +47,20 @@ public class AdminProductController {
         List<Size> sizes = sizeProductService.getAll();
         modelMap.addAttribute("sizes", sizes);
         return "admin-addProduct";
+    }
+
+    @GetMapping("updatingProduct/{id}")
+    public String updatingProduct(ModelMap modelMap, @PathVariable int id){
+        List<Category> categories = categoryService.getAll();
+        Product product = productService.getById(id);
+        List<Size> sizes = sizeProductService.getAll();
+        List<Color> colors = colorProductService.getAll();
+//        Set<DetailProduct> detailProducts = product.getDetailProducts();
+        modelMap.addAttribute("product", product);
+        modelMap.addAttribute("categories", categories);
+        modelMap.addAttribute("sizes", sizes);
+        modelMap.addAttribute("colors", colors);
+//        modelMap.addAttribute("details", detailProducts);
+        return "admin-updateProduct";
     }
 }

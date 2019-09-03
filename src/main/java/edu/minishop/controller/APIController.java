@@ -175,6 +175,7 @@ public class APIController {
                     "<td>" + product.getCategory().getName() + "</td> " +
                     "<td>" + product.getPrice() + "</td> " +
                     "<td><img class='removeProduct' data-removeProduct='" + product.getProduct_id() + "' style='cursor: pointer' src='/Minishop/resources/imgs/remove.png ' alt='img-remove-product'></td> " +
+                    "<td><a href='adminAddingProduct/updatingProduct/"+product.getProduct_id()+"'><img src='/Minishop/resources/imgs/updated.png' alt='icon-update-product'></a></td>"+
                     "</tr>";
         }
         return html;
@@ -250,6 +251,54 @@ public class APIController {
             return "true";
         }
         return "false";
+    }
+
+    @PostMapping("updatingProduct")
+    @ResponseBody
+    public String updatingProduct(String jsonProduct){
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode;
+        Product product = new Product();
+        Set<DetailProduct> detailProducts = new HashSet<>();
+        try {
+            jsonNode = objectMapper.readTree(jsonProduct);
+
+            product.setProduct_id(jsonNode.get("product_id").asInt());
+            product.setName(jsonNode.get("name").asText());
+            product.setDescription(jsonNode.get("description").asText());
+            product.setPrice(jsonNode.get("price").asText());
+            product.setImage(jsonNode.get("image").asText());
+            product.setCategory(categoryService.getById(jsonNode.get("category").asInt()));
+
+            JsonNode arrayDetailProduct = jsonNode.get("detailProducts");
+            for (JsonNode objectDetail :
+                    arrayDetailProduct) {
+                DetailProduct detailProduct = new DetailProduct();
+                detailProduct.setColor(colorProductService.getById(objectDetail.get("color").asInt()));
+                detailProduct.setSize(sizeProductService.getById(objectDetail.get("size").asInt()));
+                detailProduct.setAmount(objectDetail.get("amount").asInt());
+                detailProduct.setDayOfEntry(objectDetail.get("dayOfEntry").asText());
+                detailProduct.setProduct(product);
+
+                detailProducts.add(detailProduct);
+                detailProduct = null;
+            }
+
+            product.setDetailProducts(detailProducts);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "false";
+        }
+
+        try {
+            productService.update(product);
+            return "true";
+        }catch (Exception e){
+            System.out.println("Error update product: "+ e.getMessage());
+            return "false";
+        }
     }
 
 }

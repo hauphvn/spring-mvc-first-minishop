@@ -143,4 +143,28 @@ public class ProductDao implements ProductImpl {
         session.save(product);
         return product;
     }
+
+    @Override
+    @Transactional
+    public Product getById(int id) {
+        Product product = new Product();
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            product = session.get(Product.class, id);
+        }catch (Exception e){
+            System.out.println("Error get product by Id: " + e.getMessage());
+        }
+        return product;
+    }
+
+    @Override
+    @Transactional
+    public void update(Product product) {
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            session.update(product);
+        }catch (Exception e){
+            System.out.println("Error update product: "+ e.getMessage());
+        }
+    }
 }

@@ -279,6 +279,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <th>Danh mục</th>
                                 <th>Giá tiền</th>
                                 <th>Xóa</th>
+                                <th>Cập nhật</th>
                             </tr>
                             </thead>
                             <tbody id="choosePage" >
@@ -288,6 +289,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <td>${product.getCategory().getName()}</td>
                                             <td>${product.getPrice()}</td>
                                             <td><img class="removeProduct" data-removeProduct="${product.getProduct_id()}" style='cursor: pointer' src='<c:url value='/resources/imgs/remove.png'/> ' alt='img-remove-product'></td>
+                                            <td><a href="adminAddingProduct/updatingProduct/${product.getProduct_id()}"><img src='<c:url value="/resources/imgs/updated.png"/> '
+                                                                                                          alt="icon-update-product"></a></td>
                                         </tr>
                                     </c:forEach>
                             </tbody>
